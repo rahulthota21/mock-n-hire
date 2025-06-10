@@ -1,0 +1,151 @@
+[
+    {
+        "filename": "resume_c242f93b9d.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python (NumPy, Pandas, TensorFlow, Scikit Learn)",
+                "Machine Learning",
+                "C, Java, HTML, CSS, JavaScript, HTML, CSS, Flask, SQL, POWERBI",
+                "OpenCV",
+                "OCR"
+            ],
+            "Certifications & Courses": [
+                "Salesforce AI Associate \u2013 Salesforce",
+                "Data Science For Engineers \u2013 IIT MADRAS with NPTEL(ELITE)",
+                "AWS Educate \u2013 Credly"
+            ],
+            "Relevant Projects": [
+                "ANPR and ATCC For Smart Traffic Management System",
+                "Bug Vidhya"
+            ],
+            "Soft Skills": [
+                "good people skills"
+            ],
+            "Overall Match Score": 7,
+            "Projects Relevance Score": 7,
+            "Experience Relevance Score": 5,
+            "Final Score": 325,
+            "Relative Ranking Score": 100.0
+        }
+    },
+    {
+        "filename": "resume_c7672a8cc6.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "Machine Learning",
+                "Deep Learning",
+                "Natural Language Processing (NLP)",
+                "Neural Networks",
+                "SQL",
+                "Data Structures",
+                "Algorithms"
+            ],
+            "Overall Analysis": "Meenakshy S has a strong background in machine learning and deep learning, which makes her a good fit for the AI Engineer role. However, she is currently pursuing her undergraduate degree and lacks the required 3-5 years of experience. Her projects demonstrate relevant skills, but her experience level does not meet the job requirement.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "Alzheimer\u2019s Classification using EEG",
+                "Abusive Tamil and Malayalam Text Detection"
+            ],
+            "Soft Skills": [
+                "Time Management",
+                "Verbal and Written Communication",
+                "Active Listening",
+                "Creative Thinking",
+                "Decision Making",
+                "Self-Motivation",
+                "Resilience",
+                "Ethical Responsibility"
+            ],
+            "Overall Match Score": 6,
+            "Projects Relevance Score": 8,
+            "Experience Relevance Score": 2,
+            "Final Score": 260,
+            "Relative Ranking Score": 64.86
+        }
+    },
+    {
+        "filename": "resume_c73713db85.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python (PyTorch, Librosa)",
+                "ML algorithms",
+                "Machine Learning workflows",
+                "Docker",
+                "Kubernetes"
+            ],
+            "Overall Analysis": "The resume does not fully align with the job description. The candidate has relevant technical skills in Python, PyTorch, and ML workflows. However, the candidate's experience and projects do not fully match the key responsibilities and core requirements of the AI Engineer role, particularly in terms of deep learning, NLP, and specific tools like AWS SageMaker, MLflow, and Prometheus.",
+            "Certifications & Courses": [
+                "Certified in Data-analytics (using excel)"
+            ],
+            "Relevant Projects": [
+                "IOT solutions for Senior Care",
+                "Audio Source Separation using python and ML"
+            ],
+            "Soft Skills": [
+                "Collaborative skills"
+            ],
+            "Overall Match Score": 5,
+            "Projects Relevance Score": 3,
+            "Experience Relevance Score": 4,
+            "Final Score": 195,
+            "Relative Ranking Score": 29.73
+        }
+    },
+    {
+        "filename": "resume_c87dc59925.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "React.js",
+                "Java",
+                "Spring Boot"
+            ],
+            "Overall Analysis": "Krishna Bhagat has identified skills like Python, React.js, Java, including Spring Boot, which are relevant to the position of AI Engineer. However, without explicit mention of machine learning libraries like NumPy, Pandas, PyTorch, TensorFlow, or frameworks such as AWS services, FastAPI, MLOps and CI/CD practices, the direct fit for the job might be suboptimal. Additionally, exposure to AI/ML project is lacking and no mention of publications or open-source contributions.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "Real-Time Group Chat Application"
+            ],
+            "Soft Skills": [
+                "Team Collaboration",
+                "Meeting deadlines",
+                "Quick adaptation to new technologies"
+            ],
+            "Overall Match Score": 4,
+            "Projects Relevance Score": 5,
+            "Experience Relevance Score": 2,
+            "Final Score": 185,
+            "Relative Ranking Score": 24.32
+        }
+    },
+    {
+        "filename": "resume_c5bc434afc.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Spring Boot",
+                "Java",
+                "RESTful APIs",
+                "MySQL",
+                "Hibernate",
+                "Backend Development"
+            ],
+            "Overall Analysis": "The candidate possesses a strong background in backend development and object-oriented programming, with practical experience in technologies like Spring Boot, Java, and RESTful APIs. However, the resume does not strongly highlight relevant experience in AI/ML, Python, or the specifics outlined in the job description, such as TensorFlow, PyTorch, Docker, Kubernetes, or AWS. The candidate's educational background is in Computer Science, but there is no direct mention of AI/ML coursework or projects in these areas.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "Car Rental Automation System (Infosys Springboard Internship)",
+                "Delivery Route Optimization",
+                "Medical Management System"
+            ],
+            "Soft Skills": [
+                "Problem-solving",
+                "Teamwork",
+                "Communication"
+            ],
+            "Overall Match Score": 4,
+            "Projects Relevance Score": 2,
+            "Experience Relevance Score": 3,
+            "Final Score": 140,
+            "Relative Ranking Score": 0.0
+        }
+    }
+]

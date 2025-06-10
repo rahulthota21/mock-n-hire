@@ -1,0 +1,186 @@
+[
+    {
+        "filename": "resume_c7672a8cc6.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "NumPy",
+                "Pandas",
+                "PyTorch",
+                "TensorFlow",
+                "Machine Learning",
+                "Deep Learning",
+                "Natural Language Processing",
+                "Docker",
+                "Kubernetes",
+                "AWS (S3, Lambda, SageMaker, EC2, CloudWatch)",
+                "Git",
+                "CI/CD practices",
+                "REST API design",
+                "SQL",
+                "Signal Processing"
+            ],
+            "Overall Analysis": "The resume shows relevant technical skills and experience in machine learning, deep learning, and NLP, particularly with Python and relevant libraries. However, specific experience with deployment tools like Docker, Kubernetes, and AWS is not explicitly mentioned. The projects are relevant but do not fully cover the specific requirements like multilingual sentiment analysis and real-time inference APIs.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "Alzheimer\u2019s Classification using EEG (though more about disease detection rather than recommendation)",
+                "Abusive Tamil and Malayalam Text Detection (demonstrates NLP and language-specific tasks if combined with sentiment analysis)"
+            ],
+            "Soft Skills": [
+                "Time Management",
+                "Verbal and Written Communication",
+                "Active Listening",
+                "Creative Thinking",
+                "Decision Making",
+                "Self-Motivation",
+                "Resilience",
+                "Ethical Responsibility"
+            ],
+            "Overall Match Score": 6,
+            "Projects Relevance Score": 5,
+            "Experience Relevance Score": 4,
+            "Final Score": 245,
+            "Relative Ranking Score": 100.0
+        }
+    },
+    {
+        "filename": "resume_c242f93b9d.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "NumPy",
+                "Pandas",
+                "TensorFlow",
+                "Machine Learning",
+                "Java",
+                "OpenCV",
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "Flask",
+                "SQL",
+                "POWERBI",
+                "Data Analytics",
+                "Frontend Development",
+                "OCR"
+            ],
+            "Overall Analysis": "Mahitha Kurrisai Mahitha has relevant technical skills and projects related to machine learning and data analytics, which aligns well with the job description. However, there is a lack of direct experience with deep learning models, NLP, and specific tools like Docker, Kubernetes, FastAPI, and AWS SageMaker. Her projects focus more on educational tools and traffic management rather than product recommendation and personalized search. Her background in Python and TensorFlow is a strong foundation, but additional experience in specific areas mentioned in the job description is needed to be a perfect fit.",
+            "Certifications & Courses": [
+                "Salesforce AI Associate",
+                "Data Science For Engineers",
+                "AWS Educate"
+            ],
+            "Relevant Projects": [
+                "Bug Vidhya: Created an educational website using HTML, CSS, JavaScript, Python, Flask, and ACE API.",
+                "ANPR and ATCC For Smart Traffic Management System: Developed an intelligent traffic management system using Python, OpenCV, TensorFlow, CNNs, OCR, and YOLO Model."
+            ],
+            "Soft Skills": [
+                "Good people skills",
+                "Teamwork (as part of group projects)"
+            ],
+            "Overall Match Score": 6,
+            "Projects Relevance Score": 5,
+            "Experience Relevance Score": 3,
+            "Final Score": 215,
+            "Relative Ranking Score": 81.82
+        }
+    },
+    {
+        "filename": "resume_c73713db85.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "IoT",
+                "Signal Processing",
+                "Machine Learning",
+                "PyTorch",
+                "Librosa",
+                "CNN-based architectures",
+                "Data Analytic",
+                "Excel"
+            ],
+            "Overall Analysis": "The candidate's background in Electronics and Communication Engineering is a good start, but lacks the specific background in Computer Science or AI required for the role. The experience with IoT and signal processing is relevant, but the candidate does not have experience with key technologies like Docker, Kubernetes, and AWS for deployment. Additionally, the candidate lacks experience with NLP models, neural architecture search (LoRA), and MLOps tools.",
+            "Certifications & Courses": [
+                "Certified in Data Analytics (using Excel)"
+            ],
+            "Relevant Projects": [
+                "Audio Source Separation using Python and ML",
+                "IoT solutions for Senior Care"
+            ],
+            "Soft Skills": [
+                "Signal Processing",
+                "Communication Skills",
+                "Real-world Solutions"
+            ],
+            "Overall Match Score": 5,
+            "Projects Relevance Score": 3,
+            "Experience Relevance Score": 2,
+            "Final Score": 135,
+            "Relative Ranking Score": 33.33
+        }
+    },
+    {
+        "filename": "resume_c87dc59925.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Java",
+                "C",
+                "Python",
+                "MySQL",
+                "MongoDB",
+                "Git/GitHub",
+                "ReactJS",
+                "Spring Boot",
+                "Hibernate"
+            ],
+            "Overall Analysis": "Krishna Bhagat has a strong background in Computer Science with expertise in Java and related tools and technologies. However, there is a significant gap in the required skills for the AI Engineer role, particularly in areas such as deep learning, NLP, and cloud services like AWS.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "Real-Time Group Chat Application: Deployed a real-time messaging app which shows skills in web development and real-time communication, but does not directly relate to AI or machine learning."
+            ],
+            "Soft Skills": [
+                "Collaborative teamwork",
+                "Adapting to new technologies",
+                "Meeting deadlines"
+            ],
+            "Overall Match Score": 5,
+            "Projects Relevance Score": 2,
+            "Experience Relevance Score": 2,
+            "Final Score": 110,
+            "Relative Ranking Score": 18.18
+        }
+    },
+    {
+        "filename": "resume_c5bc434afc.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Java",
+                "Spring Boot",
+                "RESTful APIs",
+                "MySQL",
+                "Hibernate",
+                "Maven",
+                "Problem-solving",
+                "Teamwork",
+                "Communication skills"
+            ],
+            "Overall Analysis": "Aaditya is a Computer Science and Engineering student with a strong foundation in backend development, proficient in Java, Spring Boot, and RESTful APIs. He has experience in designing scalable systems and optimizing processes. However, he lacks direct experience in AI/ML, Python, and key tools relevant to the AI Engineer role described.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "CarCaddy - Car Rental Automation System",
+                "Delivery Route Optimization",
+                "Medical Management System"
+            ],
+            "Soft Skills": [
+                "Problem-solving",
+                "Teamwork",
+                "Communication skills"
+            ],
+            "Overall Match Score": 2,
+            "Projects Relevance Score": 2,
+            "Experience Relevance Score": 1,
+            "Final Score": 80,
+            "Relative Ranking Score": 0.0
+        }
+    }
+]
