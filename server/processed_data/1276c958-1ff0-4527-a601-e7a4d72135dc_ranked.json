@@ -1,0 +1,1050 @@
+[
+    {
+        "filename": "resume_ca451d50da.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "NumPy",
+                "Pandas",
+                "TensorFlow",
+                "FastAPI",
+                "AWS S3, Lambda, SageMaker, EC2, CloudWatch",
+                "Docker",
+                "Kubernetes",
+                "Git",
+                "CI/CD",
+                "REST API design",
+                "MTech (Artificial Intelligence)",
+                "Data Preprocessing",
+                "Deep Learning Architectures",
+                "EfficientNet",
+                "Scikit-learn",
+                "NLP",
+                "TF-IDF",
+                "Logistic Regression",
+                "HTML/CSS/JavaScript",
+                "API Integration"
+            ],
+            "Overall Analysis": "The candidate has a strong educational background with an MTech in Artificial Intelligence and relevant project experience in machine learning and data processing. They are proficient in key skills necessary for the job, including Python, TensorFlow, and various NLP techniques. The candidate has some relevant project experience but lacks specific mentions of sophisticated tools and practices such as Docker, Kubernetes, and AWS services, which are listed in the Nice to Have section of the job description.",
+            "Certifications & Courses": [
+                "MTech in Artificial Intelligence",
+                "BTech in Computer Science"
+            ],
+            "Relevant Projects": [
+                "Plant Disease Detection (using EfficientNet B0)",
+                "Fake Product Review Detection (Scikit-learn, TF-IDF, Logistic Regression)",
+                "Retinal Disease Classification (CNN/BNN)"
+            ],
+            "Soft Skills": [
+                "Problem-solving skills",
+                "Quick learner",
+                "Proactive approach",
+                "Adaptability",
+                "Strong communication skills",
+                "Teamwork and collaboration"
+            ],
+            "Overall Match Score": 7.5,
+            "Projects Relevance Score": 8.0,
+            "Experience Relevance Score": 6.5,
+            "Final Score": 515.0,
+            "Relative Ranking Score": 100.0
+        }
+    },
+    {
+        "filename": "resume_b483f9d365.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python (NumPy, Pandas, PyTorch, TensorFlow)",
+                "Machine Learning Algorithms",
+                "Model Evaluation Metrics",
+                "Training Workflows",
+                "Docker",
+                "Kubernetes",
+                "AWS (S3, Lambda, SageMaker, EC2, CloudWatch)",
+                "Git",
+                "CI/CD",
+                "REST API Design",
+                "FastAPI"
+            ],
+            "Overall Analysis": "Aarivananthan M has a solid academic background in Artificial Intelligence. His experience aligns well with many key responsibilities mentioned in the job description, particularly in the areas of model deployment, data preprocessing, NLP, and collaboration with cross-functional teams. There are some gaps, particularly in terms of specific frameworks like LoRA and PEFT for fine-tuning large language models, as well as in the specific experience with certain MLOps tools.",
+            "Certifications & Courses": [
+                "Certified Oracle Cloud Infrastructure 2024 Generative AI Professional"
+            ],
+            "Relevant Projects": [
+                "NeuroScribe - EEG data processing and prediction",
+                "Clip Crunch - Youtube Video Summarizer with AWS Transcribe and Bedrock",
+                "Multimodal Insomnic Prediction - Classifying Insomnia using Machine Learning and Explainable AI"
+            ],
+            "Soft Skills": [
+                "Leadership",
+                "Communication"
+            ],
+            "Overall Match Score": 7,
+            "Projects Relevance Score": 6,
+            "Experience Relevance Score": 8,
+            "Final Score": 480,
+            "Relative Ranking Score": 92.31
+        }
+    },
+    {
+        "filename": "resume_c242f93b9d.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "NumPy",
+                "Pandas",
+                "TensorFlow",
+                "Deep Learning"
+            ],
+            "Overall Analysis": "The candidate has a strong technical background in Python and deep learning, which aligns well with the job requirements. However, there is a lack of experience in key areas such as AWS, Docker, Kubernetes, and NLP models.",
+            "Certifications & Courses": [
+                "Salesforce AI Associate",
+                "Data Science For Engineers \u2013 IIT MADRAS with NPTEL(ELITE)",
+                "AWS Educate \u2013 Credly"
+            ],
+            "Relevant Projects": [
+                "Bug Vidhya (Group Project)",
+                "ANPR and ATCC For Smart Traffic Management System"
+            ],
+            "Soft Skills": [],
+            "Overall Match Score": 7,
+            "Projects Relevance Score": 7,
+            "Experience Relevance Score": 5,
+            "Final Score": 430,
+            "Relative Ranking Score": 81.32
+        }
+    },
+    {
+        "filename": "resume_b68667107d.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python (NumPy, Pandas)",
+                "Machine Learning",
+                "Data Analysis",
+                "Jupyter Lab",
+                "AWS (Lambda, EC2, S3)",
+                "Docker",
+                "Kubernetes",
+                "CI/CD pipelines"
+            ],
+            "Overall Analysis": "The candidate has a strong educational background in computer science and has shown proficiency in programming, data analysis, and cloud technologies. The experience and skills align well with the job description, particularly in areas such as data analysis, machine learning, and cloud computing. However, the candidate lacks direct experience in deep learning, NLP, and specific tools like FastAPI, TensorFlow, and PyTorch, which are mentioned in the job description.",
+            "Certifications & Courses": [
+                "AWS Cloud Essentials - Amazon Web Services (AWS)",
+                "Responsive Web Design - freeCodeCamp",
+                "Scientific Computing with Python - freeCodeCamp",
+                "Machine Learning with Python - freeCodeCamp",
+                "JavaScript Algorithms and Data Structures - freeCodeCamp",
+                "Data Visualization - freeCodeCamp",
+                "Data Analysis with Python - freeCodeCamp",
+                "Data Structures Using Python - Udemy",
+                "Master Class on Data Science using Python A-Z for Machine Learning - Udemy",
+                "Python Foundation Certification - Infosys"
+            ],
+            "Relevant Projects": [
+                "Medical Cost Ridge Regression Prediction"
+            ],
+            "Soft Skills": [
+                "Self-starter",
+                "Independent project management",
+                "Adaptability"
+            ],
+            "Overall Match Score": 6,
+            "Projects Relevance Score": 5,
+            "Experience Relevance Score": 7,
+            "Final Score": 410,
+            "Relative Ranking Score": 76.92
+        }
+    },
+    {
+        "filename": "resume_aac6c4d425.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "NumPy",
+                "Pandas",
+                "PyTorch",
+                "TensorFlow",
+                "Machine Learning",
+                "Deep Learning",
+                "AI",
+                "Docker",
+                "Kubernetes",
+                "AWS",
+                "S3",
+                "Lambda",
+                "SageMaker",
+                "EC2",
+                "CloudWatch",
+                "Git",
+                "CI/CD",
+                "REST API",
+                "FastAPI",
+                "MLflow",
+                "Prometheus"
+            ],
+            "Overall Analysis": "The candidate demonstrates a strong foundation in machine learning, deep learning, and AI. However, the experience is more research-oriented rather than production-ready. The candidate lacks significant experience with key technologies like Docker, Kubernetes, and AWS in production environments. The candidate has good skills in developing AI models but needs to gain more experience in deploying and monitoring them in a production setting.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "Advanced Prompt Engineering with GPT: Leveraging OpenAI for Custom Content Generation"
+            ],
+            "Soft Skills": [
+                "Collaboration",
+                "Agile environments",
+                "Problem-Solving",
+                "Continuous Learning"
+            ],
+            "Overall Match Score": 6,
+            "Projects Relevance Score": 7,
+            "Experience Relevance Score": 4,
+            "Final Score": 400,
+            "Relative Ranking Score": 74.73
+        }
+    },
+    {
+        "filename": "resume_ac449e7922.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "Java",
+                "C",
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "MS Excel",
+                "MS PowerPoint",
+                "MS Word"
+            ],
+            "Overall Analysis": "Sravya is a Computer Science student with a strong academic background. She has some experience with AI through internships and projects but lacks the industry experience required for a Mid-Level AI Engineer position.",
+            "Certifications & Courses": [
+                "Deep Learning for Developers - INFOSYS limited",
+                "Generative models for developers - INFOSYS limited",
+                "The Python Fundamentals - Corporate and Industry Relations, AVV"
+            ],
+            "Relevant Projects": [
+                "Developed a model for smartphone anomaly detection",
+                "Stationary Shop Management System (not directly related to AI)",
+                "Machine Learning model for the early diagnosis of Alzheimer\u2019s disease"
+            ],
+            "Soft Skills": [
+                "Problem-solving",
+                "Analytical skills",
+                "Team collaboration",
+                "Independent role abilities"
+            ],
+            "Overall Match Score": 5,
+            "Projects Relevance Score": 5,
+            "Experience Relevance Score": 5,
+            "Final Score": 350,
+            "Relative Ranking Score": 63.74
+        }
+    },
+    {
+        "filename": "resume_adc27bca76.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Machine Learning",
+                "Deep Learning",
+                "AI",
+                "Programming (Python, NA, NA)",
+                "Public Speaking",
+                "Leadership",
+                "Explainable AI",
+                "Hybrid Metaheuristic Optimization"
+            ],
+            "Overall Analysis": "Sharanya Thambi is currently a student pursuing B.Tech in Computer Science Engineering with a focus on Artificial Intelligence. Her profile highlights strong academic performance and several leadership roles. Although she has experience with machine learning and AI-driven projects, her current experience level is limited to academic and extracurricular activities rather than professional experience in roles similar to the job description provided.",
+            "Certifications & Courses": [
+                "First Place, IEEE CIS AI Hackathon",
+                "First Place, Prakalp Science Fest",
+                "First Place, College Hackathon",
+                "Second Place, International Speech Contest Club Level"
+            ],
+            "Relevant Projects": [
+                "Enhanced Classification of Exoplanets Using Machine Learning",
+                "Hybrid Metaheuristic Optimization for Lung Cancer Image Classification"
+            ],
+            "Soft Skills": [
+                "Leadership",
+                "Public Speaking",
+                "Mentorship",
+                "Teamwork",
+                "Communication"
+            ],
+            "Overall Match Score": 5,
+            "Projects Relevance Score": 6,
+            "Experience Relevance Score": 3,
+            "Final Score": 330,
+            "Relative Ranking Score": 59.34
+        }
+    },
+    {
+        "filename": "resume_b34e85e44b.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "Machine Learning",
+                "NLP",
+                "Deep Learning"
+            ],
+            "Overall Analysis": "The candidate has a decent understanding of machine learning and neural networks, which are relevant to the job. However, the candidate lacks the specific experience with deep learning models for recommendation and personalized search as well as transformer-based NLP models (e.g., BERT, RoBERTa). Limited experience with AWS and cloud deployment, though they do have familiarity with CI/CD practices.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "Sentimental analysis with imbalanced code mixed data",
+                "Brain tumor detection using XGBoost and CNN"
+            ],
+            "Soft Skills": [
+                "Problem-solving",
+                "Technical Documentation"
+            ],
+            "Overall Match Score": 6,
+            "Projects Relevance Score": 4,
+            "Experience Relevance Score": 5,
+            "Final Score": 310,
+            "Relative Ranking Score": 54.95
+        }
+    },
+    {
+        "filename": "resume_c44672948d.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "NumPy",
+                "Pandas",
+                "Machine Learning",
+                "Data Preprocessing",
+                "MLflow",
+                "Prometheus",
+                "AWS SageMaker",
+                "FastAPI",
+                "Docker",
+                "Kubernetes",
+                "Rest API",
+                "Git",
+                "Cyber Security"
+            ],
+            "Overall Analysis": "The candidate has a background in computer science with a focus on cybersecurity. The resume highlights projects related to machine learning and security, but there are gaps in direct experience with AI, NLP, and deployment to AWS SageMaker. The candidate lacks relevant experience in deploying real-time inference APIs, fine-tuning transformer-based NLP models, and working with transformers like BERT or RoBERTa.",
+            "Certifications & Courses": [
+                "Pragmatic Approach to Cyber Security"
+            ],
+            "Relevant Projects": [
+                "Android Malware Detection",
+                "LUFlow Network Intrusion Detection Data Set",
+                "Attendance Management System",
+                "Bank Atm Project"
+            ],
+            "Soft Skills": [
+                "Communication",
+                "Collaboration",
+                "Prototyping",
+                "Project Management"
+            ],
+            "Overall Match Score": 4,
+            "Projects Relevance Score": 6,
+            "Experience Relevance Score": 2,
+            "Final Score": 300,
+            "Relative Ranking Score": 52.75
+        }
+    },
+    {
+        "filename": "resume_c73713db85.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "NumPy",
+                "Pandas",
+                "PyTorch"
+            ],
+            "Overall Analysis": "The candidate has relevant coursework and projects in signal processing and AI, but lacks significant experience in deep learning, deploying ML models on AWS, and working with NLP/Sentiment analysis or real-time APIs as required by the job description. The resume needs more information on specific ML frameworks and cloud services experience.",
+            "Certifications & Courses": [
+                "Certified in Data-analytics (using excel)"
+            ],
+            "Relevant Projects": [
+                "IOT solutions for Senior Care",
+                "Audio Source Separation using Python and ML"
+            ],
+            "Soft Skills": [
+                "Teamwork",
+                "Innovation"
+            ],
+            "Overall Match Score": 4,
+            "Projects Relevance Score": 5,
+            "Experience Relevance Score": 3,
+            "Final Score": 290,
+            "Relative Ranking Score": 50.55
+        }
+    },
+    {
+        "filename": "resume_c818716867.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "TensorFlow",
+                "NumPy",
+                "Pandas",
+                "Django",
+                "HTML5",
+                "CSS3",
+                "JavaScript",
+                "Bootstrap",
+                "MySQL",
+                "SQL",
+                "Machine Learning",
+                "Docker",
+                "Kubernetes",
+                "AWS",
+                "Git",
+                "REST API",
+                "Docker",
+                "Kubernetes",
+                "AWS S3",
+                "AWS Lambda",
+                "AWS EC2",
+                "AWS CloudWatch",
+                "MLflow",
+                "Prometheus",
+                "FastAPI"
+            ],
+            "Overall Analysis": "The candidate\u2019s education and certifications align well with the job description. However, some key requirements are partially matched or missing, such as experience with specific ML libraries (Pytorch, specific NLP models tuning), reinforcement learning, graph neural networks, and MLOps tools.",
+            "Certifications & Courses": [
+                "Google Professional Data Analytics Certificate",
+                "RPA Foundation",
+                "Certified Specialist in RPA"
+            ],
+            "Relevant Projects": [
+                "Final year Project- Secure FIR documentation using Blockchain Technology"
+            ],
+            "Soft Skills": [
+                "Python",
+                "TensorFlow",
+                "Machine Learning",
+                "AI",
+                "REST API",
+                "MLOps",
+                "Cloud Services (AWS)"
+            ],
+            "Overall Match Score": 6,
+            "Projects Relevance Score": 3,
+            "Experience Relevance Score": 5,
+            "Final Score": 270,
+            "Relative Ranking Score": 46.15
+        }
+    },
+    {
+        "filename": "resume_b1d57529d6.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "NLP",
+                "Machine Learning",
+                "Computer Vision",
+                "Natural Language Processing",
+                "spaCy",
+                "T5 Transformer",
+                "Django",
+                "JavaScript",
+                "RESTful APIs"
+            ],
+            "Overall Analysis": "Ankit Raj appears to have a strong background in computer science with a focus on AI and machine learning technologies. His experience with NLP, use of libraries like spaCy and T5 Transformer, and knowledge of Django and REST APIs are relevant to the job requirements. However, he lacks experience with Docker, Kubernetes, AWS services extensively used in the job description, and is not currently at the mid-level experience required (as indicated by the job description, he has an education experience with no explicit relevant experience).",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                {
+                    "Project Title": "Voice-Driven File System Automation",
+                    "Description": "Developed a system using Python, spaCy, and T5 Transformer to automate file operations through voice commands."
+                },
+                {
+                    "Project Title": "Dynamic Weather Report",
+                    "Description": "Created a full-stack web application using Python, Django, and JavaScript to display location-based weather data via RESTful APIs."
+                }
+            ],
+            "Soft Skills": [
+                "Problem-solving skills",
+                "Proficiency in Python",
+                "Teamwork",
+                "Detail-oriented",
+                "Continuous Learning"
+            ],
+            "Overall Match Score": 6,
+            "Projects Relevance Score": 4,
+            "Experience Relevance Score": 3,
+            "Final Score": 250,
+            "Relative Ranking Score": 41.76
+        }
+    },
+    {
+        "filename": "resume_c5bc434afc.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "REST API Design"
+            ],
+            "Overall Analysis": "Aaditya Yadav has relevant programming skills and some project experience, but lacks direct experience in machine learning and specific requirements such as Big Data processing, NLP, and deployments in AWS SageMaker, Docker, Kubernetes, and familiarity with MLOps tools. He also does not have a Bachelor\u2019s degree in Computer Science or a related field, which is a core requirement.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [],
+            "Soft Skills": [
+                "Teamwork",
+                "Communication"
+            ],
+            "Overall Match Score": 3.5,
+            "Projects Relevance Score": 4.0,
+            "Experience Relevance Score": 3.0,
+            "Final Score": 250.0,
+            "Relative Ranking Score": 41.76
+        }
+    },
+    {
+        "filename": "resume_abcbaa82bd.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Deep Learning",
+                "Machine Learning",
+                "CNNs",
+                "Transfer Learning",
+                "Data Augmentation",
+                "API Development",
+                "CI/CD",
+                "Software Development",
+                "Frontend Development",
+                "Backend Development",
+                "Docker"
+            ],
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "Smart Waste Segregation System"
+            ],
+            "Soft Skills": [
+                "Problem Solving",
+                "Collaboration",
+                "Leadership",
+                "Communication"
+            ],
+            "Overall Match Score": 5,
+            "Projects Relevance Score": 3,
+            "Experience Relevance Score": 4,
+            "Overall Analysis": "The resume shows a strong foundation in computer science and software development, including frontend, backend, and containerization. However, the relevant experience is limited to projects and lacks direct experience with deep learning, ML workflows, and deployment in production environments as required by the job. The candidate may need further training or project experience to align more closely with the job requirements",
+            "Final Score": 240,
+            "Relative Ranking Score": 39.56
+        }
+    },
+    {
+        "filename": "resume_b13a6b5c43.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "Linux",
+                "GitHub",
+                "Kubernetes",
+                "Docker",
+                "Terraform",
+                "Redhat Linux"
+            ],
+            "Certifications & Courses": [
+                "B.Tech in Electrical and Electronics Engineering",
+                "DevOps Training",
+                "Redhat Linux Training"
+            ],
+            "Relevant Projects": [
+                "Shell Scripting and AWS functionalities",
+                "Testing and Tuning with CloudWatch"
+            ],
+            "Soft Skills": [],
+            "Overall Analysis": "The resume shows hands-on experience with AWS services, Docker, Kubernetes, and DevOps, which is relevant to the job description. However, there is a lack of direct experience with the specific tasks outlined in the job description, such as deploying deep learning models, fine-tuning NLP models, or using FastAPI. The candidate would benefit from enhanced knowledge in specific ML frameworks and programming languages like Python, specifically frameworks like TensorFlow or PyTorch.",
+            "Overall Match Score": 5,
+            "Projects Relevance Score": 3,
+            "Experience Relevance Score": 4,
+            "Final Score": 240,
+            "Relative Ranking Score": 39.56
+        }
+    },
+    {
+        "filename": "resume_bcd4adcbdc.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "Machine Learning",
+                "TensorFlow",
+                "Pandas",
+                "NumPy",
+                "Machine Learning",
+                "ML algorithms",
+                "Model evaluation metrics",
+                "AWS",
+                "GIT",
+                "Docker",
+                "Kubernetes"
+            ],
+            "Overall Analysis": "Sameer Krishn Sistla has a strong background in Python and machine learning, with experience in deploying models and working with AWS. However, the resume lacks direct experience in NLP, specific expertise with transformer-based models, and experience with Docker and Kubernetes. Additionally, the experience level and project focus do not fully align with the key responsibilities of the job description.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "Diabetes Prediction Model",
+                "Optimizing Automated Vehicle Path Planning on Adverse Weather Conditions",
+                "Smart Energy Monitor"
+            ],
+            "Soft Skills": [
+                "Leadership skills",
+                "Public speaking",
+                "Group discussion skills"
+            ],
+            "Overall Match Score": 5,
+            "Projects Relevance Score": 3,
+            "Experience Relevance Score": 4,
+            "Final Score": 240,
+            "Relative Ranking Score": 39.56
+        }
+    },
+    {
+        "filename": "resume_b0e4f5f1b6.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "ROS (Robot Operating System)",
+                "C++",
+                "MATLAB",
+                "SolidWorks",
+                "CATIA V5",
+                "Arduino",
+                "Machine Learning (Random Forest, XGBoost)",
+                "IoT"
+            ],
+            "Overall Analysis": "Rahil Roshan's background in robotics and design software is strong, but it does not directly align with the technical requirements for an AI Engineer role. The candidate lacks experience in key areas such as deep learning, NLP, and cloud deployment, which are essential for the job.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "Electromagnetic Refrigeration system for Automated baby cradle",
+                "Smart Irrigation System Using Machine Learning",
+                "Autonomous Warehouse AGV with RFID and Line Following"
+            ],
+            "Soft Skills": [
+                "Adaptability",
+                "Quick Learning",
+                "Excellent communication skills",
+                "Problem-solving skills"
+            ],
+            "Overall Match Score": 3,
+            "Projects Relevance Score": 4,
+            "Experience Relevance Score": 2,
+            "Final Score": 220,
+            "Relative Ranking Score": 35.16
+        }
+    },
+    {
+        "filename": "resume_b1b41de95b.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "Web Development",
+                "Databases",
+                "MySQL",
+                "Django",
+                "Flask",
+                "Git",
+                "Docker",
+                "Machine Learning",
+                "Random Forest",
+                "Data Visualization"
+            ],
+            "Overall Analysis": "The candidate has some relevant skills in programming and web development, as well as basic knowledge of machine learning and databases. However, the resume lacks detailed experience in deep learning, NLP, or deployment on AWS SageMaker, which are core requirements for the AI Engineer position.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "Farmers Management System",
+                "E-NAM Agriculture App",
+                "Sign Language Translator"
+            ],
+            "Soft Skills": [],
+            "Overall Match Score": 4,
+            "Projects Relevance Score": 4,
+            "Experience Relevance Score": 2,
+            "Final Score": 220,
+            "Relative Ranking Score": 35.16
+        }
+    },
+    {
+        "filename": "resume_a7d66f7ef8.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "Machine Learning",
+                "PostgreSQL",
+                "SQL",
+                "Git"
+            ],
+            "Overall Analysis": "The candidate has relevant skills in Python, SQL, and machine learning, but lacks critical experience in deploying ML models in production, working with transformers, and utilizing specific AI frameworks. Most projects are not well-aligned with the roles key responsibilities and expertise.",
+            "Certifications & Courses": [
+                "Introduction to Machine Learning Course on DataCamps(2023)",
+                "Introduction to Deep Learning Course on DataCamps(2024)"
+            ],
+            "Relevant Projects": [
+                "CHURN PREDICTION ML MODEL (2024) - Designed and implemented different types of machine learning models to predict customer churn using a complex dataset."
+            ],
+            "Soft Skills": [
+                "Strong coding and technology foundation",
+                "Passionate about leveraging technical expertise to deliver impactful solutions with a focus on innovation and continuous learning"
+            ],
+            "Overall Match Score": 5,
+            "Projects Relevance Score": 3,
+            "Experience Relevance Score": 3,
+            "Final Score": 210,
+            "Relative Ranking Score": 32.97
+        }
+    },
+    {
+        "filename": "resume_b3b4377a15.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "Machine Learning",
+                "UI/UX Design",
+                "Web Development",
+                "Database Utilization"
+            ],
+            "Overall Analysis": "The candidate has relevant experience in machine learning and data analysis, but lacks direct experience with deep learning, NLP, and deployment on AWS SageMaker. Their internships and projects show some competence in ML and UI/UX, but they may need additional training in AI and specific tools mentioned in the job description.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "Emotion Classifier"
+            ],
+            "Soft Skills": [
+                "Communication",
+                "Collaboration",
+                "Problem-solving"
+            ],
+            "Overall Match Score": 4,
+            "Projects Relevance Score": 3,
+            "Experience Relevance Score": 3,
+            "Final Score": 210,
+            "Relative Ranking Score": 32.97
+        }
+    },
+    {
+        "filename": "resume_c87dc59925.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "Numpy",
+                "Pandas",
+                "Spring Boot",
+                "Hibernate",
+                "React.js",
+                "Java",
+                "Spring Boot",
+                "MongoDB"
+            ],
+            "Overall Analysis": "Krishna Bhagat possesses strong expertise in Java and related technologies, which is slightly outside the core requirements for an AI Engineer position that primarily involves Python for machine learning and deep learning tasks. The resume indicates a focus on software development and web applications rather than AI-specific projects. The candidate lacks direct experience in ML model deployment, MLOps tools, and NLP-related technologies, which are critical for the role.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [],
+            "Soft Skills": [
+                "Problem-solving",
+                "Team collaboration",
+                "Adaptability",
+                "Time management"
+            ],
+            "Overall Match Score": 4,
+            "Projects Relevance Score": 3,
+            "Experience Relevance Score": 3,
+            "Final Score": 210,
+            "Relative Ranking Score": 32.97
+        }
+    },
+    {
+        "filename": "resume_ae668809a6.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "Java",
+                "JavaScript",
+                "React.js",
+                "Node.js",
+                "Express.js",
+                "MongoDB",
+                "MySQL",
+                "AWS",
+                "Git",
+                "Tech",
+                "GitHub"
+            ],
+            "Overall Analysis": "The candidate is proficient in various programming languages and tools, but lacks experience in specific AI/ML skills required for the job, such as NumPy, PyTorch, TensorFlow, Docker, or Kubernetes. They also do not have relevant experience in deploying ML models or working with transformers.",
+            "Certifications & Courses": [
+                "AWS Certified Cloud Practitioner",
+                "Programming Using Java",
+                "Database Management System Part 1",
+                "Google Cyber Security"
+            ],
+            "Relevant Projects": [
+                "Time Management and Productivity App (GitHub)",
+                "Weather Forecast Website"
+            ],
+            "Soft Skills": [
+                "Interpersonal skills",
+                "Problem-solving",
+                "Collaborative work",
+                "Independent problem-solving"
+            ],
+            "Overall Match Score": 4,
+            "Projects Relevance Score": 3,
+            "Experience Relevance Score": 2,
+            "Final Score": 180,
+            "Relative Ranking Score": 26.37
+        }
+    },
+    {
+        "filename": "resume_b1a4d4b5c6.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "Machine Learning",
+                "Data Structures",
+                "Embedded Systems",
+                "Data Science",
+                "OpenCV",
+                "Digital Signal Processing",
+                "VLSI Design and Testing",
+                "Operating Systems",
+                "Microprocessors",
+                "Digital Systems",
+                "Networking Basics",
+                "Communication Skills",
+                "Leadership"
+            ],
+            "Overall Analysis": "The resume shows strong academic credentials, technical skills, and a foundation in machine learning and data science. However, it lacks direct experience in AI engineering roles, especially in areas such as product recommendation, personalized search, and multilingual sentiment analysis. The projects do not directly align with the key responsibilities listed in the job description.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "Virtual Mouse using Real Time Hand Gesture Recognition: Demonstrates experience with machine learning and computer vision using OpenCV."
+            ],
+            "Soft Skills": [
+                "Adaptability",
+                "Time Management",
+                "Teamwork",
+                "Communication"
+            ],
+            "Overall Match Score": 5,
+            "Projects Relevance Score": 3,
+            "Experience Relevance Score": 2,
+            "Final Score": 180,
+            "Relative Ranking Score": 26.37
+        }
+    },
+    {
+        "filename": "resume_c7672a8cc6.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "Machine Learning",
+                "Deep Learning",
+                "Natural Language Processing",
+                "Data Structures/Algorithms",
+                "Data Analytics",
+                "Neural Networks",
+                "Transformer-based NLP models",
+                "Docker and Kubernetes",
+                "SQL",
+                "CI/CD practices",
+                "REST API design",
+                "AWS S3",
+                "AWS SageMaker",
+                "AWS EC2",
+                "AWS CloudWatch",
+                "FastAPI",
+                "MLflow",
+                "Prometheus",
+                "Git"
+            ],
+            "Overall Analysis": "The applicant has a strong educational background in Computer Science with a focus on AI, coupled with relevant technical skills. However, their experience is relatively low and the projects do not specifically align with the detailed responsibilities mentioned in the job description. The candidate has specialized in areas such as EEG signal processing and multi-lingual text detection which are somewhat relevant but not directly applicable to all core requirements.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "Alzheimer\u2019s Classification using EEG",
+                "Abusive Tamil and Malayalam Text Detection"
+            ],
+            "Soft Skills": [
+                "Time Management",
+                "Verbal and Written Communication",
+                "Active Listening",
+                "Creative Thinking",
+                "Decision Making",
+                "Self-Motivation",
+                "Resilience",
+                "Ethical Responsibility"
+            ],
+            "Overall Match Score": 5,
+            "Projects Relevance Score": 3,
+            "Experience Relevance Score": 2,
+            "Final Score": 180,
+            "Relative Ranking Score": 26.37
+        }
+    },
+    {
+        "filename": "resume_a951d7b70a.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "SVM",
+                "PAC",
+                "Natural Language Processing",
+                "Jenkins",
+                "Postman",
+                "Jira",
+                "Snowflake",
+                "Postgres",
+                "Agile Methodology",
+                "Scrum",
+                "Google Associate Cloud Engineer",
+                "NPTEL - The Joy of Computing using Python",
+                "SQL Essential"
+            ],
+            "Overall Analysis": "Mirza Benny's skills align partially with the job requirements for an AI Engineer role. They have strong backend engineering skills, experience in development and QA, continuous delivery, and have worked with certain tools and databases. However, there is a lack of direct experience in advanced AI/ML technologies such as Deep Learning, NLP, model deployment with Docker/Kubernetes, AWS services like SageMaker, and leading experimentation cycles. The provided certifications are not directly relevant to the core responsibilities of the AI Engineer role.",
+            "Certifications & Courses": [
+                "Google Associate Cloud Engineer (GCP-ACE)",
+                "The Joy of Computing using Python by NPTEL",
+                "SQL Essentials"
+            ],
+            "Relevant Projects": [
+                "Machine Learning-Based approach For Fake News Detection"
+            ],
+            "Soft Skills": [
+                "Backend development",
+                "API testing",
+                "Database management",
+                "Continous delivery",
+                "Continuous integration",
+                "Bug tracking",
+                "Regression testing",
+                "Integration testing",
+                "Bug reporting",
+                "Documentation"
+            ],
+            "Overall Match Score": 4,
+            "Projects Relevance Score": 2,
+            "Experience Relevance Score": 3,
+            "Final Score": 170,
+            "Relative Ranking Score": 24.18
+        }
+    },
+    {
+        "filename": "resume_b07fff9e18.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "Ansys HFSS",
+                "AutoCAD",
+                "LtSpice"
+            ],
+            "Overall Analysis": "The candidate lacks significant experience and specific skills required for the AI Engineer role. The resume focuses on hardware and non-related projects with limited software or AI/ML expertise.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "None"
+            ],
+            "Soft Skills": [
+                "Content Creation",
+                "Social Media Management"
+            ],
+            "Overall Match Score": 3,
+            "Projects Relevance Score": 2,
+            "Experience Relevance Score": 2,
+            "Final Score": 140,
+            "Relative Ranking Score": 17.58
+        }
+    },
+    {
+        "filename": "resume_b89d71fd29.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "NumPy",
+                "Pandas",
+                "Data Visualization"
+            ],
+            "Overall Analysis": "The resume does not match the job requirements well, as the candidate's experience is in VLSI design and not in AI or machine learning. Key responsibilities and experience related to AI, machine learning frameworks, or deployment tools are lacking.",
+            "Certifications & Courses": [
+                "Advanced VLSI Design and Verification by Maven Silicon-VLSI Training"
+            ],
+            "Relevant Projects": [],
+            "Soft Skills": [
+                "Mentorship"
+            ],
+            "Overall Match Score": 3,
+            "Projects Relevance Score": 1,
+            "Experience Relevance Score": 2,
+            "Final Score": 100,
+            "Relative Ranking Score": 8.79
+        }
+    },
+    {
+        "filename": "resume_bac00157df.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "Cybersecurity & OSINT",
+                "Penetration Testing",
+                "Bash Scripting",
+                "C, C++"
+            ],
+            "Overall Analysis": "The candidate has a strong background in cybersecurity, with multiple relevant certifications and a diverse set of skills including penetration testing, scripting, and programming. However, the candidate's experience is more geared towards cybersecurity rather than AI and machine learning, which is crucial for the role of an AI Engineer. The projects and skills listed do not align closely with the core requirements of designing and deploying deep learning models, building data pipelines, or deploying models on cloud platforms.",
+            "Certifications & Courses": [
+                "Practical Career Ready Professional - PCRP",
+                "Practical Network Penetration Tester - PNPT",
+                "eLearnSecurity Junior Penetration Tester - eJPTv2"
+            ],
+            "Relevant Projects": [],
+            "Soft Skills": [
+                "Problem-solving skills",
+                "Cybersecurity knowledge"
+            ],
+            "Overall Match Score": 3,
+            "Projects Relevance Score": 1,
+            "Experience Relevance Score": 2,
+            "Final Score": 100,
+            "Relative Ranking Score": 8.79
+        }
+    },
+    {
+        "filename": "resume_bfdce71cc6.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "AWS",
+                "Machine Learning",
+                "Docker",
+                "Kubernetes"
+            ],
+            "Overall Analysis": "Krishna Roop Pillai has some relevant skills such as Python and AWS, but lacks critical skills like Pandas and specific ML frameworks (NumPy, PyTorch, TensorFlow) which are necessary for the AI Engineer role. Also, there is no experience with NLP or transformer models mentioned. The primary focus of the resume seems to be on mobile development and cybersecurity, rather than AI and machine learning.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [],
+            "Soft Skills": [
+                "Clarity",
+                "Engagement",
+                "Adaptable",
+                "Flexible",
+                "Public Speaking",
+                "Feedback Integration",
+                "Stress Management"
+            ],
+            "Overall Match Score": 3,
+            "Projects Relevance Score": 0,
+            "Experience Relevance Score": 3,
+            "Final Score": 90,
+            "Relative Ranking Score": 6.59
+        }
+    },
+    {
+        "filename": "resume_cb197aac7a.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "MySql"
+            ],
+            "Overall Analysis": "The candidate is an aspiring Computer Science and Engineering student with foundational knowledge in Python, Java, and C++. However, they do not meet the experience and proficiency level required for the AI Engineer position, which requires 3-5 years of experience in AI and machine learning.",
+            "Certifications & Courses": [
+                "PCAP \u2013 Python Certified Associate Programmer",
+                "Udemy - Advanced C Programming course by Learn Programming Academy"
+            ],
+            "Relevant Projects": [],
+            "Soft Skills": [
+                "Problem-Solving",
+                "Teamwork",
+                "Time Management",
+                "Communication",
+                "Leadership"
+            ],
+            "Overall Match Score": 4,
+            "Projects Relevance Score": 0,
+            "Experience Relevance Score": 2,
+            "Final Score": 60,
+            "Relative Ranking Score": 0.0
+        }
+    }
+]

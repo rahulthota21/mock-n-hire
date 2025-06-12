@@ -5,40 +5,59 @@ import { GlassCard } from "@/components/ui/glass-card"
 import { GlassInput } from "@/components/ui/glass-input"
 import { motion } from "framer-motion"
 import { Upload, Brain, Calendar, TrendingUp, FileText, Play, Eye } from "lucide-react"
-import { useState, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
 import { useDropzone } from "react-dropzone"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
+import { APIStudent } from "@/lib/apiStudent"
+import { useAppStore } from "@/lib/store"
 
-const mockSessions = [
-  {
-    id: 'session-1',
-    role: 'Frontend Developer',
-    date: '2024-01-15',
-    score: 78,
-    status: 'completed'
-  },
-  {
-    id: 'session-2',
-    role: 'Product Manager',
-    date: '2024-01-12', 
-    score: 82,
-    status: 'completed'
-  },
-  {
-    id: 'session-3',
-    role: 'Data Analyst',
-    date: '2024-01-10',
-    score: 71,
-    status: 'completed'
-  }
-]
+type Session = {
+  id: string
+  role: string
+  date: string
+  score: number
+  status: string
+}
 
 export default function StudentDashboard() {
   const [resumeFile, setResumeFile] = useState<File | null>(null)
   const [jobRole, setJobRole] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
+  const [sessions, setSessions] = useState<Session[]>([])
+  const { user } = useAppStore()
+  const mockUserId = user?.id
   const router = useRouter()
+
+  // Debug logging for user object
+  useEffect(() => {
+    console.log("Current user object:", user)
+    console.log("Using mockUserId:", mockUserId)
+  }, [user, mockUserId])
+
+  // Fetch interview sessions from backend
+  useEffect(() => {
+    async function fetchSessions() {
+      try {
+        const res = await APIStudent("/admin/sessions", { method: "GET" })
+        if (!res.ok) throw new Error("Failed to fetch sessions")
+        const data = await res.json()
+        // Adapt shape if needed
+        setSessions(
+          (Array.isArray(data) ? data : data.sessions || []).map((s: any) => ({
+            id: s.session_id || s.id,
+            role: s.role || "N/A",
+            date: s.date || (s.created_at ? s.created_at.split("T")[0] : ""),
+            score: s.overall_score ?? s.score ?? 0,
+            status: s.status ?? "completed",
+          }))
+        )
+      } catch (err: any) {
+        toast.error("Failed to fetch sessions: " + err.message)
+      }
+    }
+    fetchSessions()
+  }, [])
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     if (acceptedFiles.length > 0) {
@@ -57,23 +76,53 @@ export default function StudentDashboard() {
     maxFiles: 1
   })
 
+  // ---- INTERVIEW GENERATION LOGIC ----
   const handleGenerateInterview = async () => {
-    if (!resumeFile || !jobRole) {
-      toast.error("Please upload your resume and specify the job role")
+    if (!resumeFile || !jobRole || !mockUserId) {
+      toast.error("Please upload your resume, specify the job role, and ensure you are logged in")
       return
     }
 
     setIsGenerating(true)
-    
-    // Simulate processing time
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    // Generate mock session ID and redirect
-    const sessionId = 'session-' + Date.now()
-    toast.success("Interview generated! Get ready...")
-    
-    setIsGenerating(false)
-    router.push(`/interview/${sessionId}`)
+
+    try {
+      // Log the user object and ID being used
+      console.log("User object:", user)
+      console.log("Uploading resume for user_id:", mockUserId)
+      
+      // 1. Upload resume
+      const formData = new FormData()
+      formData.append("file", resumeFile)
+      const uploadRes = await APIStudent(`/interview/upload-resume/${mockUserId}`, {
+        method: "POST",
+        body: formData,
+      })
+      if (!uploadRes.ok) {
+        throw new Error((await uploadRes.json()).detail || "Failed to upload resume")
+      }
+      const uploadData = await uploadRes.json()
+      const resumeId = uploadData.resume_id
+
+      // 2. Generate questions (creates session)
+      console.log("Generating questions for user_id:", mockUserId, "resume_id:", resumeId)
+      const genRes = await APIStudent(
+        `/interview/generate-questions/${mockUserId}/${resumeId}`,
+        { method: "POST" }
+      )
+      if (!genRes.ok) {
+        throw new Error((await genRes.json()).detail || "Failed to generate questions")
+      }
+      const genData = await genRes.json()
+      const sessionId = genData.session_id
+
+      toast.success("Interview generated! Get ready...")
+      setIsGenerating(false)
+      router.push(`/interview/${sessionId}`)
+    } catch (err: any) {
+      console.error("Interview generation error:", err)
+      setIsGenerating(false)
+      toast.error("Failed to generate interview: " + (err.message || "Unknown error"))
+    }
   }
 
   const getScoreColor = (score: number) => {
@@ -100,6 +149,12 @@ export default function StudentDashboard() {
       >
         <h1 className="text-3xl font-bold text-white">Student Dashboard</h1>
         <p className="text-white/60">Practice with AI-powered mock interviews</p>
+        {/* Optional: Show current user */}
+        {mockUserId && (
+          <p className="text-white/40 text-xs">
+            Logged in as: <span className="font-mono">{mockUserId}</span>
+          </p>
+        )}
       </motion.div>
 
       {/* Stats Cards */}
@@ -115,7 +170,7 @@ export default function StudentDashboard() {
               <Brain className="w-6 h-6 text-blue-400" />
             </div>
             <div>
-              <p className="text-2xl font-bold text-white">{mockSessions.length}</p>
+              <p className="text-2xl font-bold text-white">{sessions.length}</p>
               <p className="text-white/60">Interviews Taken</p>
             </div>
           </div>
@@ -128,7 +183,9 @@ export default function StudentDashboard() {
             </div>
             <div>
               <p className="text-2xl font-bold text-white">
-                {Math.round(mockSessions.reduce((acc, s) => acc + s.score, 0) / mockSessions.length)}
+                {sessions.length > 0
+                  ? Math.round(sessions.reduce((acc, s) => acc + s.score, 0) / sessions.length)
+                  : 0}
               </p>
               <p className="text-white/60">Average Score</p>
             </div>
@@ -141,7 +198,7 @@ export default function StudentDashboard() {
               <Calendar className="w-6 h-6 text-purple-400" />
             </div>
             <div>
-              <p className="text-2xl font-bold text-white">5</p>
+              <p className="text-2xl font-bold text-white">—</p>
               <p className="text-white/60">This Month</p>
             </div>
           </div>
@@ -187,7 +244,7 @@ export default function StudentDashboard() {
               </div>
             </div>
 
-            {/* Job Role */}
+            {/* Job Role Input */}
             <div className="space-y-4">
               <GlassInput
                 label="Target Job Role *"
@@ -201,7 +258,7 @@ export default function StudentDashboard() {
                   variant="primary"
                   onClick={handleGenerateInterview}
                   className="w-full flex items-center justify-center space-x-2"
-                  disabled={!resumeFile || !jobRole}
+                  disabled={!resumeFile || !jobRole || !mockUserId}
                   loading={isGenerating}
                 >
                   <Play className="w-5 h-5" />
@@ -233,7 +290,7 @@ export default function StudentDashboard() {
         </div>
         
         <div className="grid gap-4">
-          {mockSessions.map((session, index) => (
+          {sessions.map((session, index) => (
             <motion.div
               key={session.id}
               initial={{ opacity: 0, x: -20 }}

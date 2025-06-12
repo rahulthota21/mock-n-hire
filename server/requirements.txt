@@ -26,3 +26,6 @@ google-auth-httplib2
 google-api-python-client
 
 
+keras==2.11.0
+tf-keras
+tensorflow==2.11.0

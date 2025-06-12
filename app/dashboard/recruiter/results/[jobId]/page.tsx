@@ -12,7 +12,7 @@ import {
   Briefcase, Code, Award
 } from "lucide-react";
 
-/* helper colors identical to the mock version … */
+// Score color mapping
 const scoreColor = (s: number) =>
   s >= 90 ? "text-green-400" :
   s >= 80 ? "text-yellow-400" :
@@ -26,46 +26,66 @@ const statusColor = (st: string) => ({
   pending    : "bg-blue-500/20 text-blue-400 border-blue-400/30"
 }[st as keyof typeof statusColor] ?? "bg-blue-500/20 text-blue-400 border-blue-400/30");
 
-/* ──────────────────────────────────────────────────────────────── */
-
+// DB Types
 type Ranking = Database["public"]["Tables"]["resume_rankings"]["Row"];
 type Analysis = Database["public"]["Tables"]["resume_analysis"]["Row"];
+type Upload = Database["public"]["Tables"]["resume_uploads"]["Row"];
 
 export default function ResultsPage({ params }: { params: { jobId: string } }) {
   const supabase = createClientComponentClient<Database>();
   const router   = useRouter();
 
-  const [rows,        setRows]        = useState<(Ranking & Partial<Analysis>)[]>([]);
+  // State
+  const [rows, setRows] = useState<
+    (Ranking & Partial<Analysis> & { candidate_name?: string })[]
+  >([]);
   const [selectedIdx, setSelectedIdx] = useState(0);
 
-  /* 1 ▸ pull data ----------------------------------------------------------*/
+  // 1 ▸ Fetch all data
   useEffect(() => {
     (async () => {
-      /* rankings first */
-      const { data: rankings, error } = await supabase
+      // 1. Rankings (no candidate_name fetched here)
+      const { data: rankings, error: err1 } = await supabase
         .from("resume_rankings")
-        .select("resume_id,total_score,rank,status,candidate_name")
+        .select("resume_id,total_score,rank,status")
         .eq("job_id", params.jobId)
         .order("rank", { ascending: true });
+      if (err1 || !rankings?.length) return console.error(err1);
 
-      if (error || !rankings?.length) return console.error(error);
-
-      /* analyses in bulk */
+      // 2. Resume uploads (names)
       const ids = rankings.map(r => r.resume_id);
-      const { data: analyses } = await supabase
-        .from("resume_analysis")
-        .select("resume_id,key_skills,relevant_projects,certifications_courses,projects_relevance_score,experience_relevance_score")
+      const { data: uploads, error: err2 } = await supabase
+        .from("resume_uploads")
+        .select("resume_id,candidate_name")
         .in("resume_id", ids);
+      if (err2) return console.error(err2);
 
-      const map = Object.fromEntries((analyses ?? []).map(a => [a.resume_id, a]));
+      const uploadsMap: Record<string, string> =
+        Object.fromEntries((uploads ?? []).map(u => [u.resume_id, u.candidate_name || ""]));
 
-      setRows(rankings.map(r => ({ ...r, ...map[r.resume_id] })));
+      // 3. Analyses (summary, projects, skills etc.)
+      const { data: analyses, error: err3 } = await supabase
+        .from("resume_analysis")
+        .select("resume_id,key_skills,relevant_projects,certifications_courses,projects_relevance_score,experience_relevance_score,overall_analysis")
+        .in("resume_id", ids);
+      if (err3) return console.error(err3);
+
+      const analysisMap = Object.fromEntries((analyses ?? []).map(a => [a.resume_id, a]));
+
+      // 4. Combine all (rankings + names + analyses)
+      setRows(
+        rankings.map(r => ({
+          ...r,
+          candidate_name: uploadsMap[r.resume_id] ?? "Unknown",
+          ...analysisMap[r.resume_id],
+        }))
+      );
     })();
   }, [params.jobId, supabase]);
 
   const selected = rows[selectedIdx];
 
-  // 👇 NEW: Safe helper for screening title
+  // Screening Title
   function getScreeningTitle(rows: any[]) {
     if (
       rows.length &&
@@ -79,7 +99,7 @@ export default function ResultsPage({ params }: { params: { jobId: string } }) {
     return "Screening";
   }
 
-  /* 2 ▸ status update helper ---------------------------------------------*/
+  // 2 ▸ Update candidate status
   async function updateStatus(newStatus: string) {
     const row = rows[selectedIdx];
     setRows(rows => rows.map((r, i) => i === selectedIdx ? { ...r, status: newStatus } : r));
@@ -90,7 +110,7 @@ export default function ResultsPage({ params }: { params: { jobId: string } }) {
       .eq("job_id", params.jobId);
   }
 
-  /* while loading ---------------------------------------------------------*/
+  // Loading state
   if (!rows.length)
     return (
       <div className="min-h-screen flex items-center justify-center text-white/60">
@@ -98,7 +118,6 @@ export default function ResultsPage({ params }: { params: { jobId: string } }) {
       </div>
     );
 
-  /* ───────── identical UI – data wired to "rows" instead of mock ─────────*/
   return (
     <div className="container mx-auto px-4 py-8 space-y-6">
       {/* header */}
@@ -133,7 +152,7 @@ export default function ResultsPage({ params }: { params: { jobId: string } }) {
                   <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center text-white font-bold text-sm">
                     #{c.rank}
                   </div>
-                  <p className="font-medium text-white">{c.candidate_name}</p>
+                  <p className="font-medium text-white">{c.candidate_name || "Unknown"}</p>
                 </div>
                 <div className={`text-lg font-bold ${scoreColor(c.total_score)}`}>
                   {Math.round(c.total_score)}%
@@ -151,12 +170,11 @@ export default function ResultsPage({ params }: { params: { jobId: string } }) {
           {/* top card */}
           <GlassCard className="p-6">
             <div className="flex items-start justify-between mb-6">
-              <h3 className="text-xl font-bold text-white">{selected.candidate_name}</h3>
+              <h3 className="text-xl font-bold text-white">{selected.candidate_name || "Unknown"}</h3>
               <div className={`text-3xl font-bold ${scoreColor(selected.total_score)}`}>
                 {Math.round(selected.total_score)}%
               </div>
             </div>
-
             <div className="flex flex-wrap gap-3">
               <GlassButton
                 onClick={() => updateStatus("shortlisted")}
@@ -188,7 +206,6 @@ export default function ResultsPage({ params }: { params: { jobId: string } }) {
           {/* score breakdown */}
           <GlassCard className="p-6 space-y-6">
             <h4 className="text-lg font-semibold text-white">Score Breakdown</h4>
-
             <Breakdown
               icon={Briefcase} label="Experience"
               score={selected.experience_relevance_score ?? 0}
@@ -206,7 +223,6 @@ export default function ResultsPage({ params }: { params: { jobId: string } }) {
           {/* skills */}
           <GlassCard className="p-6 space-y-6">
             <h4 className="text-lg font-semibold text-white">Skills & Experience</h4>
-
             <div>
               <p className="text-sm font-medium text-white/80 mb-2">Technical Skills</p>
               <div className="flex flex-wrap gap-2">
@@ -221,13 +237,26 @@ export default function ResultsPage({ params }: { params: { jobId: string } }) {
               </div>
             </div>
           </GlassCard>
+
+          {/* NEW: Summary & Projects Card */}
+          <GlassCard className="p-6 space-y-4">
+            <h4 className="text-lg font-semibold text-white">Summary & Projects</h4>
+            <div>
+              <p className="text-white/80 font-semibold mb-2">Summary</p>
+              <p className="text-white/70">{selected.overall_analysis || "No summary available."}</p>
+            </div>
+            <div>
+              <p className="text-white/80 font-semibold mb-2">Projects</p>
+              <p className="text-white/70 whitespace-pre-line">{selected.relevant_projects || "No projects information available."}</p>
+            </div>
+          </GlassCard>
         </div>
       </div>
     </div>
   );
 }
 
-/* small helper component to keep JSX tidy */
+// Breakdown subcomponent
 function Breakdown({
   icon: Icon,
   label,

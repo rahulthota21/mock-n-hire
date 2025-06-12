@@ -229,6 +229,7 @@ async def upload_resumes(
     user_id    = user["user_id"]
     zip_path   = os.path.join(UPLOAD_FOLDER, f"{job_id}.zip")
     out_folder = os.path.join(RESUME_FOLDER, job_id)
+    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
     os.makedirs(out_folder, exist_ok=True)
 
     with open(zip_path, "wb") as buf:

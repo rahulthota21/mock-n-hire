@@ -111,6 +111,87 @@ export type Database = {
           updated_at?: string
         }
       }
+      resume_rankings: {
+        Row: {
+          resume_id: string
+          job_id: string
+          total_score: number
+          rank: number
+          status: string
+        }
+        Insert: {
+          resume_id: string
+          job_id: string
+          total_score: number
+          rank: number
+          status?: string
+        }
+        Update: {
+          resume_id?: string
+          job_id?: string
+          total_score?: number
+          rank?: number
+          status?: string
+        }
+      }
+      resume_analysis: {
+        Row: {
+          resume_id: string
+          key_skills: string
+          relevant_projects: string
+          certifications_courses: string
+          projects_relevance_score: number
+          experience_relevance_score: number
+          overall_analysis: string
+          notes?: string
+        }
+        Insert: {
+          resume_id: string
+          key_skills: string
+          relevant_projects: string
+          certifications_courses: string
+          projects_relevance_score: number
+          experience_relevance_score: number
+          overall_analysis: string
+          notes?: string
+        }
+        Update: {
+          resume_id?: string
+          key_skills?: string
+          relevant_projects?: string
+          certifications_courses?: string
+          projects_relevance_score?: number
+          experience_relevance_score?: number
+          overall_analysis?: string
+          notes?: string
+        }
+      }
+      resume_uploads: {
+        Row: {
+          resume_id: string
+          user_id: string
+          job_id: string
+          file_name: string
+          file_path: string
+          candidate_name?: string
+        }
+        Insert: {
+          resume_id: string
+          user_id: string
+          job_id: string
+          file_name: string
+          file_path: string
+          candidate_name?: string
+        }
+        Update: {
+          resume_id?: string
+          user_id?: string
+          job_id?: string
+          file_name?: string
+          file_path?: string
+          candidate_name?: string
+        }
+      }
     }
   }
 }
