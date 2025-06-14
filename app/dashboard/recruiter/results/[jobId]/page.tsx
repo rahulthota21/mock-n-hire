@@ -31,37 +31,45 @@ type Ranking = Database["public"]["Tables"]["resume_rankings"]["Row"];
 type Analysis = Database["public"]["Tables"]["resume_analysis"]["Row"];
 type Upload = Database["public"]["Tables"]["resume_uploads"]["Row"];
 
+// Your Supabase project public bucket base URL
+const SUPABASE_BUCKET_BASE = "https://pzqodlqmyfylolspvgxl.supabase.co/storage/v1/object/public/resumes";
+
 export default function ResultsPage({ params }: { params: { jobId: string } }) {
   const supabase = createClientComponentClient<Database>();
   const router   = useRouter();
 
   // State
   const [rows, setRows] = useState<
-    (Ranking & Partial<Analysis> & { candidate_name?: string })[]
+    (Ranking & Partial<Analysis> & { candidate_name?: string; file_name?: string })[]
   >([]);
   const [selectedIdx, setSelectedIdx] = useState(0);
 
   // 1 ▸ Fetch all data
   useEffect(() => {
     (async () => {
-      // 1. Rankings (no candidate_name fetched here)
+      // 1. Rankings (no candidate_name fetched here), SORTED BY SCORE DESC
       const { data: rankings, error: err1 } = await supabase
         .from("resume_rankings")
         .select("resume_id,total_score,rank,status")
         .eq("job_id", params.jobId)
-        .order("rank", { ascending: true });
+        .order("total_score", { ascending: false });
       if (err1 || !rankings?.length) return console.error(err1);
 
-      // 2. Resume uploads (names)
+      // 2. Resume uploads (names + file_name)
       const ids = rankings.map(r => r.resume_id);
       const { data: uploads, error: err2 } = await supabase
         .from("resume_uploads")
-        .select("resume_id,candidate_name")
+        .select("resume_id,candidate_name,file_name")
         .in("resume_id", ids);
       if (err2) return console.error(err2);
 
-      const uploadsMap: Record<string, string> =
-        Object.fromEntries((uploads ?? []).map(u => [u.resume_id, u.candidate_name || ""]));
+      const uploadsMap: Record<string, { name: string, fileName: string }> =
+        Object.fromEntries(
+          (uploads ?? []).map(u => [
+            u.resume_id,
+            { name: u.candidate_name || "", fileName: u.file_name || "" }
+          ])
+        );
 
       // 3. Analyses (summary, projects, skills etc.)
       const { data: analyses, error: err3 } = await supabase
@@ -72,11 +80,12 @@ export default function ResultsPage({ params }: { params: { jobId: string } }) {
 
       const analysisMap = Object.fromEntries((analyses ?? []).map(a => [a.resume_id, a]));
 
-      // 4. Combine all (rankings + names + analyses)
+      // 4. Combine all (rankings + names + analyses + file_name)
       setRows(
         rankings.map(r => ({
           ...r,
-          candidate_name: uploadsMap[r.resume_id] ?? "Unknown",
+          candidate_name: uploadsMap[r.resume_id]?.name ?? "Unknown",
+          file_name: uploadsMap[r.resume_id]?.fileName ?? "",
           ...analysisMap[r.resume_id],
         }))
       );
@@ -155,7 +164,7 @@ export default function ResultsPage({ params }: { params: { jobId: string } }) {
                   <p className="font-medium text-white">{c.candidate_name || "Unknown"}</p>
                 </div>
                 <div className={`text-lg font-bold ${scoreColor(c.total_score)}`}>
-                  {Math.round(c.total_score)}%
+                  {Math.round(c.total_score)}
                 </div>
               </div>
               <div className="flex items-center justify-between">
@@ -170,9 +179,22 @@ export default function ResultsPage({ params }: { params: { jobId: string } }) {
           {/* top card */}
           <GlassCard className="p-6">
             <div className="flex items-start justify-between mb-6">
-              <h3 className="text-xl font-bold text-white">{selected.candidate_name || "Unknown"}</h3>
+              <div>
+                <h3 className="text-xl font-bold text-white">{selected.candidate_name || "Unknown"}</h3>
+                {/* Resume Download/View Button */}
+                {selected.file_name && (
+                  <a
+                    href={`${SUPABASE_BUCKET_BASE}/${params.jobId}/${selected.file_name}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition mt-2"
+                  >
+                    View Resume
+                  </a>
+                )}
+              </div>
               <div className={`text-3xl font-bold ${scoreColor(selected.total_score)}`}>
-                {Math.round(selected.total_score)}%
+                {Math.round(selected.total_score)}
               </div>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -269,7 +291,7 @@ function Breakdown({
           <Icon className="w-4 h-4 text-blue-400" />
           <span className="text-white/80">{label}</span>
         </div>
-        <span className="text-white font-medium">{score}%</span>
+        <span className="text-white font-medium">{score}</span>
       </div>
       <Progress value={score} className="h-2" />
     </div>

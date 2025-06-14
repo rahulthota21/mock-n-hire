@@ -12,6 +12,16 @@ import { APIStudent } from "@/lib/apiStudent"
 import { useAppStore } from "@/lib/store"
 import { supabase } from "@/lib/supabase"
 
+// Helper function to validate sessionId
+const validateSessionId = (sessionId: any): string => {
+  if (typeof sessionId !== "string" || !sessionId.match(/^[\w-]{36}$/)) {
+    console.error("[InterviewPage] ERROR: sessionId is not a valid string UUID:", sessionId, typeof sessionId);
+    throw new Error("Session ID is invalid or missing.");
+  }
+  console.info("[InterviewPage] Using sessionId:", sessionId, typeof sessionId);
+  return sessionId;
+}
+
 type Question = {
   question_text: string
   category: string
@@ -27,6 +37,7 @@ export default function InterviewPage({ params }: { params: { sessionId: string 
   const [videoEnabled, setVideoEnabled] = useState(true)
   const [audioEnabled, setAudioEnabled] = useState(true)
   const [isAnswering, setIsAnswering] = useState(false)
+  const [loading, setLoading] = useState(false)
   const { user } = useAppStore()
   const mockUserId = user?.id
   const router = useRouter()
@@ -37,34 +48,39 @@ export default function InterviewPage({ params }: { params: { sessionId: string 
   const videoChunksRef = useRef<Blob[]>([])
   const audioChunksRef = useRef<Blob[]>([])
 
-  // Ensure session exists
+  // 1. Ensure session exists
   useEffect(() => {
     async function checkSessionExists() {
-      const res = await APIStudent(`/interview/next-question/${params.sessionId}/1`, { method: "GET" })
+      const sessionId = validateSessionId(params.sessionId);
+      console.info("[Step 1] Checking if session exists for sessionId:", sessionId)
+      const res = await APIStudent(`/interview/next-question/${sessionId}/1`, { method: "GET" })
       if (!res.ok) {
+        console.warn("[Step 1] Session not found. Redirecting...")
         toast.error("Session not found. Please start a new interview.")
-        router.push("/dashboard/student")
+        setTimeout(() => router.push("/dashboard/student"), 3000)
       }
     }
     checkSessionExists()
   }, [params.sessionId, router])
 
-  // Debug logging
+  // Debug logging on mount
   useEffect(() => {
-    console.log("Current user object:", user)
-    console.log("Using mockUserId:", mockUserId)
+    console.info("[Step 2] Current user object:", user)
+    console.info("[Step 2] Using mockUserId:", mockUserId)
   }, [user, mockUserId])
 
-  // Initial question fetch
+  // 2. Initial question fetch
   useEffect(() => {
     async function fetchQuestions() {
       try {
+        console.info("[Step 3] Fetching first question...")
         if (!mockUserId) {
           toast.error("Please ensure you are logged in")
           router.push("/auth/login")
           return
         }
-        const res = await APIStudent(`/interview/next-question/${params.sessionId}/1`, { method: "GET" })
+        const sessionId = validateSessionId(params.sessionId);
+        const res = await APIStudent(`/interview/next-question/${sessionId}/1`, { method: "GET" })
         if (!res.ok) throw new Error("Failed to fetch questions")
         const data = await res.json()
         setQuestions([{
@@ -74,18 +90,24 @@ export default function InterviewPage({ params }: { params: { sessionId: string 
           time_limit: data.time_limit ?? 120
         }])
         setTimeLeft(data.time_limit ?? 120)
+        console.info("[Step 3] First question fetched:", data)
       } catch (err: any) {
+        console.error("[Step 3] Failed to load questions:", err.message)
         toast.error("Failed to load questions: " + err.message)
       }
     }
     fetchQuestions()
   }, [params.sessionId, mockUserId, router, user])
 
+  // 3. Utility to fetch specific question number (used for next question)
   const fetchQuestionByNumber = async (qNum: number): Promise<Question | null> => {
+    console.info(`[Step 4] Fetching question #${qNum}`)
     try {
-      const res = await APIStudent(`/interview/next-question/${params.sessionId}/${qNum}`, { method: "GET" })
+      const sessionId = validateSessionId(params.sessionId);
+      const res = await APIStudent(`/interview/next-question/${sessionId}/${qNum}`, { method: "GET" })
       if (!res.ok) throw new Error("Failed to fetch question")
       const data = await res.json()
+      console.info(`[Step 4] Question #${qNum} fetched:`, data)
       return {
         question_text: data.question,
         category: data.category,
@@ -93,7 +115,7 @@ export default function InterviewPage({ params }: { params: { sessionId: string 
         time_limit: data.time_limit ?? 120
       }
     } catch (err: any) {
-      toast.error("Failed to load question: " + err.message)
+      console.warn(`[Step 4] No more questions at #${qNum} or failed:`, err.message)
       return null
     }
   }
@@ -103,30 +125,35 @@ export default function InterviewPage({ params }: { params: { sessionId: string 
     ? ((currentQuestionIndex + 1) / questions.length) * 100
     : 0
 
-  // Camera & mic init
+  // 4. Camera & mic initialization
   useEffect(() => {
     async function initCamera() {
       try {
+        console.info("[Step 5] Initializing camera and microphone...")
         const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         streamRef.current = stream
         if (videoRef.current) videoRef.current.srcObject = stream
-      } catch {
+        console.info("[Step 5] Camera/microphone ready.")
+      } catch (e) {
+        console.error("[Step 5] Camera access denied.", e)
         toast.error("Camera access denied. Please enable camera permissions.")
       }
     }
     initCamera()
     return () => {
       streamRef.current?.getTracks().forEach(t => t.stop())
+      console.info("[Step 5] Camera/microphone streams stopped.")
     }
   }, [])
 
-  // Countdown timer
+  // 5. Countdown timer logic
   useEffect(() => {
     let interval: NodeJS.Timeout
     if (isAnswering && timeLeft > 0) {
       interval = setInterval(() => {
         setTimeLeft(prev => {
           if (prev <= 1) {
+            console.info("[Step 6] Timer expired, auto-finishing question.")
             handleNextQuestion()
             return 0
           }
@@ -137,6 +164,7 @@ export default function InterviewPage({ params }: { params: { sessionId: string 
     return () => clearInterval(interval)
   }, [isAnswering, timeLeft])
 
+  // 6. Start answering logic
   const startAnswering = () => {
     if (!streamRef.current) return
     videoChunksRef.current = []
@@ -162,13 +190,13 @@ export default function InterviewPage({ params }: { params: { sessionId: string 
     videoRecorder.start()
     audioRecorder.start()
 
-    console.log("Video and audio recording started for question:", currentQuestion?.question_number)
+    console.info(`[Step 7] Started recording for Q${currentQuestion?.question_number}`)
     setIsAnswering(true)
     setIsRecording(true)
     toast.success("Recording started. You may begin your answer.")
   }
 
-  // Upload with retry helper
+  // 7. Upload helper with logging
   async function uploadWithRetry(
     bucket: string,
     path: string,
@@ -176,6 +204,7 @@ export default function InterviewPage({ params }: { params: { sessionId: string 
     contentType: string,
     retries = 3
   ) {
+    console.info(`[Step 8] Uploading to ${bucket}/${path} (size: ${blob.size} bytes)`)
     for (let attempt = 1; attempt <= retries; attempt++) {
       const { error } = await supabase.storage
         .from(bucket)
@@ -184,40 +213,50 @@ export default function InterviewPage({ params }: { params: { sessionId: string 
           upsert: true,
           contentType
         })
-      if (!error) return
-      console.warn(`[Upload] ${bucket}/${path} attempt ${attempt} failed:`, error.message)
+      if (!error) {
+        console.info(`[Step 8] Upload success for ${bucket}/${path} on attempt ${attempt}`)
+        return
+      }
+      console.warn(`[Step 8] Upload attempt ${attempt} failed for ${bucket}/${path}:`, error.message)
       await new Promise(r => setTimeout(r, 1000))
     }
     throw new Error(`Upload failed for ${bucket}/${path}`)
   }
 
-  // ░░░ fire-and-forget backend calls (never awaited) ░░░
+  // 8. Notify backend after upload (fire-and-forget)
   function notifyBackend(sessionId: string, qNum: number) {
+    const validatedSessionId = validateSessionId(sessionId);
+    console.info(`[Step 9] Notifying backend for submit-answer/stress, Q${qNum}`)
     // submit-answer
     APIStudent(
-      `/interview/submit-answer/${sessionId}/${qNum}`,
+      `/interview/submit-answer/${validatedSessionId}/${qNum}`,
       { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" }
     )
       .then(r => {
         if (!r.ok) return r.text().then(t => Promise.reject(new Error(t)))
-        console.log(`[Backend] submit-answer queued Q${qNum}`)
+        console.info(`[Step 9] [Backend] submit-answer queued Q${qNum}`)
       })
-      .catch(e => console.warn(`[submit-answer] ignored: ${e.message}`))
+      .catch(e => console.warn(`[Step 9] [submit-answer] ignored: ${e.message}`))
 
     // stress analysis
     APIStudent(
-      `/stress/analyze-stress/${sessionId}/${qNum}`,
+      `/stress/analyze-stress/${validatedSessionId}/${qNum}`,
       { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" }
     )
       .then(r => {
         if (!r.ok) return r.json().then(d => Promise.reject(new Error(d.detail)))
-        console.log(`[Backend] stress queued Q${qNum}`)
+        console.info(`[Step 9] [Backend] stress queued Q${qNum}`)
       })
-      .catch(e => console.warn(`[stress] ignored: ${e.message}`))
+      .catch(e => console.warn(`[Step 9] [stress] ignored: ${e.message}`))
   }
 
-  // Handle Next / Finish
+  // 9. Handle Next / Finish, with parallel fetch of next question
   const handleNextQuestion = async () => {
+    if (loading) {
+      console.info("[Step 10] Already processing next question, ignoring duplicate call.")
+      return
+    }
+    setLoading(true)
     setIsAnswering(false)
     setIsRecording(false)
 
@@ -236,35 +275,49 @@ export default function InterviewPage({ params }: { params: { sessionId: string 
     const qNum = currentQuestion!.question_number
     const videoBlob = new Blob(videoChunksRef.current, { type: "video/webm" })
     const audioBlob = new Blob(audioChunksRef.current, { type: "audio/webm" })
+    console.info(`[Step 11] Created video/audio blobs for Q${qNum}: video size=${videoBlob.size}, audio size=${audioBlob.size}`)
 
-    try {
-      // 3) upload blobs (await)
-      await Promise.all([
-        uploadWithRetry("mock.interview.videos",
-          `videos/${params.sessionId}/${qNum}/video.webm`, videoBlob, "video/webm"),
-        uploadWithRetry("mock.interview.answers",
-          `answers/${params.sessionId}/${qNum}/audio.webm`, audioBlob, "audio/webm")
-      ])
-    } catch (e: any) {
-      toast.error(`Upload failed for Q${qNum}: ${e.message}`)
-    }
-
-    // 4) queue backend processing (non-blocking)
-    notifyBackend(params.sessionId, qNum)
-
-    // 5) immediately fetch next question & update UI
+    // 3) fetch next question immediately (start in parallel)
     const nextIdx = currentQuestionIndex + 1
     const nextNum = qNum + 1
-    const nextQ   = await fetchQuestionByNumber(nextNum)
+    const nextQuestionPromise = fetchQuestionByNumber(nextNum)
+
+    try {
+      const sessionId = validateSessionId(params.sessionId);
+      // 4) upload blobs (await)
+      await Promise.all([
+        uploadWithRetry("mock.interview.videos",
+          `videos/${sessionId}/${qNum}/video.webm`, videoBlob, "video/webm"),
+        uploadWithRetry("mock.interview.answers",
+          `answers/${sessionId}/${qNum}/audio.webm`, audioBlob, "audio/webm")
+      ])
+      console.info(`[Step 12] All uploads completed for Q${qNum}`)
+    } catch (e: any) {
+      console.error(`[Step 12] Upload failed for Q${qNum}:`, e.message)
+      toast.error(`Upload failed for Q${qNum}: ${e.message}`)
+      setLoading(false)
+      return
+    }
+
+    // 5) queue backend processing (non-blocking)
+    notifyBackend(params.sessionId, qNum)
+
+    // 6) wait for next question result (started earlier)
+    const nextQ = await nextQuestionPromise
 
     if (nextQ) {
-      setQuestions(p => (p.length > nextIdx ? p : [...p, nextQ]))
+      setQuestions(prev => (prev.length > nextIdx ? prev : [...prev, nextQ]))
       setCurrentQuestionIndex(nextIdx)
       setTimeLeft(nextQ.time_limit ?? 120)
+      console.info(`[Step 13] Updated UI to next question Q${nextQ.question_number}`)
     } else {
       toast.success("Interview completed! Generating your report…")
-      router.push(`/interview/${params.sessionId}/summary`)
+      console.info("[Step 13] No more questions. Redirecting to summary.")
+      const sessionId = validateSessionId(params.sessionId);
+      await APIStudent(`/interview/final-report/${sessionId}`, { method: "GET" });
+      setTimeout(() => router.push(`/interview/${sessionId}/summary`), 1500)
     }
+    setLoading(false)
   }
 
   const toggleVideo = () => {
@@ -272,6 +325,7 @@ export default function InterviewPage({ params }: { params: { sessionId: string 
     if (track) {
       track.enabled = !videoEnabled
       setVideoEnabled(!videoEnabled)
+      console.info(`[Step 14] Video toggled: ${!videoEnabled ? "ON" : "OFF"}`)
     }
   }
   const toggleAudio = () => {
@@ -279,6 +333,7 @@ export default function InterviewPage({ params }: { params: { sessionId: string 
     if (track) {
       track.enabled = !audioEnabled
       setAudioEnabled(!audioEnabled)
+      console.info(`[Step 14] Audio toggled: ${!audioEnabled ? "ON" : "OFF"}`)
     }
   }
   const formatTime = (s: number) => {
@@ -404,6 +459,7 @@ export default function InterviewPage({ params }: { params: { sessionId: string 
                     onClick={startAnswering}
                     variant="primary"
                     className="w-full flex items-center justify-center space-x-2 py-4"
+                    disabled={loading}
                   >
                     <Mic className="w-5 h-5" />
                     <span>Start Recording</span>
@@ -422,6 +478,7 @@ export default function InterviewPage({ params }: { params: { sessionId: string 
                       onClick={handleNextQuestion}
                       variant="primary"
                       className="flex-1 flex items-center justify-center space-x-2"
+                      disabled={loading}
                     >
                       {currentQuestionIndex + 1 < questions.length ? (
                         <>

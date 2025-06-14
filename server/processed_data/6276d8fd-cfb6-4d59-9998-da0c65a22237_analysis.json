@@ -1,0 +1,193 @@
+[
+    {
+        "filename": "resume_c242f93b9d.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Java",
+                "Python",
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "Flask",
+                "SQL",
+                "PowerBI",
+                "Machine Learning",
+                "Machine Learning",
+                "Data Analytics",
+                "Frontend Development"
+            ],
+            "Overall Analysis": "Mahitha Kurri has a strong foundation in relevant programming languages and frameworks. Her technical skills and projects demonstrate a strong alignment with the job requirements, particularly in backend and frontend development, and machine learning. She has participated in competitive programming, certified courses, and has relevant certifications. Her experience with frameworks like Flask and libraries like TensorFlow are valuable.",
+            "Certifications & Courses": [
+                "Salesforce AI Associate \u2013 Salesforce",
+                "Data Science For Engineers \u2013 IIT MADRAS with NPTEL(ELITE)",
+                "AWS Educate \u2013 Credly"
+            ],
+            "Relevant Projects": [
+                "Bug Vidhya (Group Project)",
+                "ANPR and ATCC For Smart Traffic Management System"
+            ],
+            "Soft Skills": [],
+            "Overall Match Score": 8,
+            "Projects Relevance Score": 9,
+            "Experience Relevance Score": 8,
+            "Final Score": 590
+        }
+    },
+    {
+        "filename": "resume_c5bc434afc.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Java",
+                "Spring Boot",
+                "RESTful APIs",
+                "MySQL",
+                "Hibernate",
+                "Higher Secondary Education",
+                "REST APIs",
+                "Object-Oriented Programming",
+                "Problem-Solving",
+                "Communication Skills",
+                "Inventory Management",
+                "Back-end Development",
+                "Algorithms"
+            ],
+            "Overall Analysis": "The candidate has a strong profile with relevant experience in backend development using Java and Spring Boot, RESTful APIs, MySQL, and Hibernate. The candidate has completed a Springboard internship and has a background in higher secondary education. The candidate has exhibited strong problem-solving abilities and effective communication skills.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "CarCaddy"
+            ],
+            "Soft Skills": [
+                "Communication Skills",
+                "Problem-Solving",
+                "Team Collaboration",
+                "Time Management"
+            ],
+            "Overall Match Score": 7,
+            "Projects Relevance Score": 8,
+            "Experience Relevance Score": 6,
+            "Final Score": 480
+        }
+    },
+    {
+        "filename": "resume_c73713db85.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "C++",
+                "Matlab",
+                "IoT",
+                "Digital Signal Processing",
+                "Machine Learning",
+                "React.js",
+                "Node.js",
+                "Database Management",
+                "C#",
+                "HTML",
+                "CSS",
+                "Prototyping",
+                "Linux"
+            ],
+            "Certifications & Courses": [
+                "Certified in Data-Analytics (using Excel)"
+            ],
+            "Relevant Projects": [
+                "IOT solutions for Senior Care",
+                "Audio Source Separation using Python and ML"
+            ],
+            "Soft Skills": [
+                "Collaboration",
+                "Problem-solving"
+            ],
+            "Overall Analysis": "Siddarth has relevant projects and skills in IoT, Digital Signal Processing, and Machine Learning, but lacks hands-on experience with backend languages like Java, Python, and Node.js, as well as frontend frameworks like React.js. Additionally, there is no mention of experience with version control systems like Git/GitHub or databases like MySQL, PostgreSQL, or MongoDB.",
+            "Overall Match Score": 6,
+            "Projects Relevance Score": 5,
+            "Experience Relevance Score": 4,
+            "Final Score": 310
+        }
+    },
+    {
+        "filename": "resume_c7672a8cc6.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Python",
+                "Matlab",
+                "Machine Learning",
+                "Deep Learning",
+                "Neural Networks",
+                "SQL",
+                "Data Structures",
+                "Algorithms",
+                "Natural Language Processing",
+                "Wavelet-based adaptive filtering",
+                "CNN",
+                "XLM-RoBERTa embedding",
+                "Time Management",
+                "Verbal and Written Communication",
+                "Active Listening",
+                "Creative Thinking",
+                "Decision Making",
+                "Self-Motivation",
+                "Resilience",
+                "Ethical Responsibility"
+            ],
+            "Overall Analysis": "The candidate has a strong background in technical skills, particularly in Machine Learning, Deep Learning, and Natural Language Processing. However, there is a focus on Python and MATLAB rather than the required backend languages (Java, Python, Node.js) and frontend frameworks (React.js, TypeScript). The candidate's experience with SQL is relevant but lacks experience with MySQL, PostgreSQL, or MongoDB. The candidate's non-technical skills are strong, which is beneficial for collaboration in a team. The projects are diverse and showcase strong technical capabilities but lack direct relevance to backend or frontend development for SaaS products.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "Alzheimer\u2019s Classification using EEG",
+                "Abusive Tamil and Malayalam Text Detection"
+            ],
+            "Soft Skills": [
+                "Time Management",
+                "Verbal and Written Communication",
+                "Active Listening",
+                "Creative Thinking",
+                "Decision Making",
+                "Self-Motivation",
+                "Resilience",
+                "Ethical Responsibility"
+            ],
+            "Overall Match Score": 6,
+            "Projects Relevance Score": 5,
+            "Experience Relevance Score": 4,
+            "Final Score": 310
+        }
+    },
+    {
+        "filename": "resume_c87dc59925.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Java",
+                "Python",
+                "JavaScript",
+                "React.js",
+                "Spring Boot",
+                "MySQL",
+                "MongoDB",
+                "Git",
+                "VS Code",
+                "Eclipse"
+            ],
+            "Overall Analysis": "Krishna Bhagat has a strong technical foundation in Java and React.js. His projects demonstrate good implementation skills and understanding of Java backend and React frontend technologies. His experience with databases like MySQL and MongoDB, along with framework and libraries such as Spring Boot, aligns well with the job description. Additionally, his proficiency with Git is noted, which is crucial for collaboration in a team environment. His projects, especially the Real-Time Group Chat Application, showcase relevant skills and problem-solving abilities. However, experience with Node.js, TypeScript, and CI/CD pipelines is lacking, which are specified for this role.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                {
+                    "Project": "Real-Time Group Chat Application",
+                    "Description": "Developed a real-time group chat app with React, Spring Boot, and MongoDB. Implemented WebSocket and STOMP Client for real-time bi-directional communication."
+                },
+                {
+                    "Project": "Music App",
+                    "Description": "Developed a music streaming app using Kotlin, integrating Deezer API for accessing a vast music library."
+                },
+                {
+                    "Project": "Air-Journey Game",
+                    "Description": "Developed a customized version of Flappy Bird using Java, featuring an airplane."
+                }
+            ],
+            "Soft Skills": [],
+            "Overall Match Score": 8,
+            "Projects Relevance Score": 8,
+            "Experience Relevance Score": 7,
+            "Final Score": 520
+        }
+    }
+]

@@ -43,3 +43,5 @@ server/venv
 *.exe
 *.zip
 .DS_Store
+.env
+.envlocal

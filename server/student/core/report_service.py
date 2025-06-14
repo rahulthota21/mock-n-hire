@@ -15,13 +15,26 @@ class ReportService:
     def generate_final_report(self, session_id: str) -> FinalReportResponse:
         logger.info(f"Generating final report for session_id: {session_id}")
         try:
-            # Check if the session exists
+            # Validate session_id format (must be a valid UUID)
+            import uuid
+            try:
+                uuid.UUID(session_id)
+            except ValueError:
+                logger.error(f"Invalid session_id format: {session_id}")
+                raise ValueError("Invalid session_id format. Must be a valid UUID.")
+
+            # Check if the session exists and fetch user details
             logger.debug(f"Fetching session with id: {session_id}")
-            session = self.supabase.table("mock_interview_sessions").select("*").eq("id", session_id).execute()
+            session = self.supabase.table("mock_interview_sessions").select(
+                "*, user_id:mock_interview_users(user_id:users(user_id, name, email, role))"
+            ).eq("id", session_id).execute()
             if not session.data:
                 logger.error(f"No session found with session_id: {session_id}")
                 raise Exception(f"No session found with session_id: {session_id}")
             session_data = session.data[0]
+            user_data = session_data.get("user_id", {})
+            user_name = user_data.get("name", "Unknown User") if user_data else "Unknown User"
+            user_role = user_data.get("role", "candidate") if user_data else "candidate"
 
             # Fetch questions
             logger.debug(f"Fetching questions for session_id: {session_id}")
@@ -34,17 +47,24 @@ class ReportService:
             # Fetch stress data
             logger.debug(f"Fetching stress data for session_id: {session_id}")
             stress_data = self.supabase.table("mock_interview_stress_analysis").select("*").eq("session_id", session_id).execute()
-            stress_dict = {entry["question_number"]: entry for entry in stress_data.data} if stress_data.data else {}
-            stress_scores = [entry["stress_score"] for entry in stress_data.data if entry["stress_score"] is not None] if stress_data.data else []
-            average_stress = sum(stress_scores) / len(stress_scores) if stress_scores else 0.0
-            average_stress_level = "High Stress" if average_stress > 60 else "Moderate Stress" if average_stress > 30 else "Low Stress"
+            if not stress_data.data:
+                logger.warning(f"No stress analysis data found for session_id: {session_id}")
+                stress_dict = {}
+                stress_scores = []
+                average_stress = 0.0
+                average_stress_level = "Not Analyzed"
+            else:
+                stress_dict = {entry["question_number"]: entry for entry in stress_data.data}
+                stress_scores = [entry["stress_score"] for entry in stress_data.data if entry["stress_score"] is not None]
+                average_stress = sum(stress_scores) / len(stress_scores) if stress_scores else 0.0
+                average_stress_level = "High Stress" if average_stress > 60 else "Moderate Stress" if average_stress > 30 else "Low Stress"
             logger.info(f"Average stress for session {session_id}: {average_stress} ({average_stress_level})")
 
             # Fetch answers
             logger.debug(f"Fetching answers for session_id: {session_id}")
             answers = self.supabase.table("mock_interview_answers").select("*").eq("session_id", session_id).execute()
             answers_dict = {entry["question_number"]: entry for entry in answers.data} if answers.data else {}
-            logger.debug(f"Fetched {len(answers.data)} answers")
+            logger.debug(f"Fetched {len(answers.data) if answers.data else 0} answers")
 
             # Generate question reports
             question_reports: List[QuestionReport] = []
@@ -78,55 +98,134 @@ class ReportService:
                 final_score *= 0.9  # 10% penalty for moderate stress
             logger.info(f"Final score for session {session_id}: {final_score} (base: {avg_answer_score}, adjusted for stress: {average_stress})")
 
-            # Generate summary and recommendation using Groq
+            # Generate summary and recommendation using Grok with detailed prompts
             logger.debug(f"Generating summary and recommendation for session_id: {session_id}")
+            # Prepare detailed data for the prompt
+            question_summary = "\n".join([
+                f"- Question {qr.question_number} ({qr.category}): Score {qr.score if qr.score is not None else 'N/A'}, "
+                f"Stress {qr.stress_score if qr.stress_score is not None else 'N/A'} ({qr.stress_level})"
+                for qr in question_reports
+            ])
             summary_prompt = f"""
 You are an AI interviewer summarizing a mock interview session for a Software Engineer role.
 
-Session Details:
-- Average Stress: {average_stress} ({average_stress_level})
-- Average Answer Score: {avg_answer_score if answer_scores else 'N/A'}
-- Questions Answered: {len(answers_dict)} out of {len(questions.data)}
+Candidate Details:
+- Name: {user_name}
+- Role: {user_role}
 
-Provide a 2-3 sentence summary of the candidate's performance, focusing on their stress levels and answer quality.
+Session Details:
+- Total Questions: {len(questions.data)}
+- Questions Answered: {len(answers_dict)}
+- Average Stress: {average_stress:.1f} ({average_stress_level})
+- Average Answer Score: {avg_answer_score:.1f}
+- Final Score (adjusted for stress): {final_score:.1f}
+
+Performance Breakdown:
+{question_summary}
+
+Provide a concise 2-3 sentence summary of the candidate's performance. Highlight their strengths in answer quality, 
+areas impacted by stress, and overall readiness for a Software Engineer role.
 """
             recommendation_prompt = f"""
-Based on the following session details:
-- Average Stress: {average_stress} ({average_stress_level})
-- Average Answer Score: {avg_answer_score if answer_scores else 'N/A'}
-- Questions Answered: {len(answers_dict)} out of {len(questions.data)}
+You are an AI interviewer providing actionable feedback for a mock interview candidate.
 
-Provide a 1-2 sentence recommendation for the candidate to improve their interview performance.
+Candidate Details:
+- Name: {user_name}
+- Role: {user_role}
+
+Session Details:
+- Total Questions: {len(questions.data)}
+- Questions Answered: {len(answers_dict)}
+- Average Stress: {average_stress:.1f} ({average_stress_level})
+- Average Answer Score: {avg_answer_score:.1f}
+- Final Score (adjusted for stress): {final_score:.1f}
+
+Performance Breakdown:
+{question_summary}
+
+Provide a 1-2 sentence actionable recommendation to help the candidate improve their interview performance. 
+Focus on stress management or answer quality based on their performance.
 """
-            summary_completion = self.groq_service.client.chat.completions.create(
-                messages=[
-                    {"role": "system", "content": "You are a helpful AI assistant that summarizes interview performance."},
-                    {"role": "user", "content": summary_prompt}
-                ],
-                model="llama3-8b-8192",
-                max_tokens=150  # Increased for more detailed responses
-            )
-            recommendation_completion = self.groq_service.client.chat.completions.create(
-                messages=[
-                    {"role": "system", "content": "You are a helpful AI assistant that provides interview recommendations."},
-                    {"role": "user", "content": recommendation_prompt}
-                ],
-                model="llama3-8b-8192",
-                max_tokens=150
-            )
-            overall_summary = summary_completion.choices[0].message.content.strip()
-            recommendation = recommendation_completion.choices[0].message.content.strip()
-            logger.info(f"Generated summary: {overall_summary}")
-            logger.info(f"Generated recommendation: {recommendation}")
+            # Default values in case Grok API fails
+            overall_summary = "Performance summary could not be generated due to an error."
+            recommendation = "Recommendation could not be generated due to an error."
+            try:
+                # Attempt summary generation with Grok
+                summary_completion = self.groq_service.client.chat.completions.create(
+                    messages=[
+                        {"role": "system", "content": "You are a helpful AI assistant that summarizes interview performance."},
+                        {"role": "user", "content": summary_prompt}
+                    ],
+                    model="llama3-8b-8192",
+                    max_tokens=150,
+                    temperature=0.7
+                )
+                overall_summary = summary_completion.choices[0].message.content.strip()
+                logger.info(f"Generated summary: {overall_summary}")
+            except Exception as e:
+                logger.error(f"Failed to generate summary via Grok API: {str(e)}")
+                overall_summary = f"{user_name} completed {len(answers_dict)} out of {len(questions.data)} questions with an average answer score of {avg_answer_score:.1f}. Stress levels were {average_stress_level.lower()} (average stress: {average_stress:.1f})."
+
+            try:
+                # Attempt recommendation generation with Grok
+                recommendation_completion = self.groq_service.client.chat.completions.create(
+                    messages=[
+                        {"role": "system", "content": "You are a helpful AI assistant that provides interview recommendations."},
+                        {"role": "user", "content": recommendation_prompt}
+                    ],
+                    model="llama3-8b-8192",
+                    max_tokens=150,
+                    temperature=0.7
+                )
+                recommendation = recommendation_completion.choices[0].message.content.strip()
+                logger.info(f"Generated recommendation: {recommendation}")
+            except Exception as e:
+                logger.error(f"Failed to generate recommendation via Grok API: {str(e)}")
+                if average_stress > 60:
+                    recommendation = "Consider practicing stress management techniques, such as deep breathing, to reduce high stress during interviews."
+                elif avg_answer_score < 6:
+                    recommendation = "Focus on improving answer quality by practicing common Software Engineer interview questions and structuring your responses clearly."
+                else:
+                    recommendation = "Continue practicing to maintain your performance, and consider mock interviews to further reduce stress."
 
             # Insert the report into the database with upsert to avoid duplicates
             logger.debug(f"Upserting report into mock_interview_reports for session_id: {session_id}")
-            self.supabase.table("mock_interview_reports").upsert({
+            report_data = {
                 "session_id": session_id,
                 "overall_summary": overall_summary,
                 "final_score": final_score,
-                "recommendation": recommendation
-            }, on_conflict="session_id").execute()
+                "recommendation": recommendation,
+                "average_stress_score": average_stress,
+                "average_stress_level": average_stress_level,
+                "created_at": datetime.utcnow().isoformat()
+            }
+            try:
+                # Attempt upsert with all fields
+                self.supabase.table("mock_interview_reports").upsert(
+                    report_data,
+                    on_conflict=["session_id"]
+                ).execute()
+                logger.info(f"Successfully upserted report to mock_interview_reports for session_id: {session_id}")
+            except Exception as e:
+                logger.error(f"Upsert failed: {str(e)}")
+                # Fallback: Try upsert without stress columns if they are missing in schema
+                if "column" in str(e).lower() and ("average_stress_score" in str(e).lower() or "average_stress_level" in str(e).lower()):
+                    logger.warning(f"Columns average_stress_score/average_stress_level not found in mock_interview_reports, saving without them")
+                    reduced_report_data = {
+                        "session_id": session_id,
+                        "overall_summary": overall_summary,
+                        "final_score": final_score,
+                        "recommendation": recommendation,
+                        "created_at": datetime.utcnow().isoformat()
+                    }
+                    self.supabase.table("mock_interview_reports").upsert(
+                        reduced_report_data,
+                        on_conflict=["session_id"]
+                    ).execute()
+                    logger.info(f"Successfully upserted report (without stress columns) for session_id: {session_id}")
+                else:
+                    logger.error(f"Failed to upsert report into mock_interview_reports: {str(e)}")
+                    raise Exception(f"Failed to save report to database: {str(e)}")
 
             logger.info(f"Successfully generated final report for session_id: {session_id}")
             return FinalReportResponse(
@@ -147,6 +246,30 @@ Provide a 1-2 sentence recommendation for the candidate to improve their intervi
         """Generate a summary of a user's interview performance across all sessions."""
         logger.info(f"Generating user summary for mock_user_id: {mock_user_id}")
         try:
+            # Validate mock_user_id format (must be a valid UUID)
+            import uuid
+            try:
+                uuid.UUID(mock_user_id)
+            except ValueError:
+                logger.error(f"Invalid mock_user_id format: {mock_user_id}")
+                raise ValueError("Invalid mock_user_id format. Must be a valid UUID.")
+
+            # Fetch user details to verify role
+            user = self.supabase.table("mock_interview_users").select(
+                "*, user_id:users(user_id, name, email, role)"
+            ).eq("user_id", mock_user_id).execute()
+            if not user.data:
+                logger.info(f"No user found for mock_user_id: {mock_user_id}")
+                return UserSummaryResponse(
+                    mock_user_id=mock_user_id,
+                    total_sessions=0,
+                    average_stress_trend=[],
+                    weakest_question_types={},
+                    progress_over_time={}
+                )
+            user_data = user.data[0]
+            user_role = user_data.get("user_id", {}).get("role", "student")
+
             # Fetch all sessions for the user
             sessions = self.supabase.table("mock_interview_sessions").select("*").eq("user_id", mock_user_id).order("start_time").execute()
             if not sessions.data:

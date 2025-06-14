@@ -1,0 +1,146 @@
+[
+    {
+        "filename": "resume_c242f93b9d.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Java",
+                "Python",
+                "JavaScript",
+                "HTML",
+                "CSS",
+                "Flask",
+                "SQL",
+                "NumPy",
+                "Pandas",
+                "TensorFlow",
+                "Scikit Learn",
+                "OCR",
+                "OpenCV",
+                "Machine Learning",
+                "Data Analytics",
+                "Frontend Development"
+            ],
+            "Certifications & Courses": [
+                "Salesforce AI Associate \u2013 Salesforce",
+                "Data Science For Engineers \u2013 IIT MADRAS with NPTEL(ELITE)",
+                "AWS Educate \u2013 Credly"
+            ],
+            "Projects Relevance Score": 8,
+            "Experience Relevance Score": 7,
+            "Overall Match Score": 8,
+            "Overall Analysis": "Mahitha Kurrisaimahitha has a strong foundation in relevant technical skills and projects that align well with the job description. Her experience with Java, Python, and frontend development tools is particularly significant. Certifications in AI and data science add to her qualification. However, there is a preference for React.js/TypeScript over JavaScript and Flask. Additionally, experience in CI/CD pipelines, Docker, Kubernetes, and AWS/GCP would further boost her match score.",
+            "Relevant Projects": [
+                "Bug Vidhya (Group Project) - Developed an educational website using HTML, CSS, JavaScript, Python, Flask",
+                "ANPR and ATCC For Smart Traffic Management System - Developed an intelligent traffic management system using Python, OpenCV, TensorFlow, CNNs, OCR, and YOLO Model"
+            ],
+            "Soft Skills": [],
+            "Final Score": 590
+        }
+    },
+    {
+        "filename": "resume_c5bc434afc.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Java",
+                "Spring Boot",
+                "RESTful APIs",
+                "MySQL",
+                "Hibernate",
+                "Hibernate ORM",
+                "Maven",
+                "Java Swing",
+                "Eclipse IDE",
+                "Problem-solving",
+                "Teamwork",
+                "Communication"
+            ],
+            "Overall Analysis": "Aaditya Yadav is a recent Computer Science and Engineering graduate with strong foundational knowledge in backend development, particularly in Java and Spring Boot. He has practical experience in developing scalable systems and integrating RESTful APIs. His project experience shows a solid grasp of backend technologies and robust problem-solving skills. His hands-on experience with MySQL and Hibernate suggests a good understanding of database management and ORM. Aaditya's educational background and strong CGPA indicate academic excellence. However, his experience with frontend technologies and cloud infrastructure is limited, which might be a gap for this role requiring proficiency in both backend and frontend development.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                {
+                    "Project Name": "CarCaddy - Car Rental Automation System",
+                    "Tools": "Spring Boot, MySQL, Hibernate, REST APIs, Maven"
+                },
+                {
+                    "Project Name": "Delivery Route Optimization",
+                    "Tools": "Java, Eclipse IDE, Java Swing"
+                },
+                {
+                    "Project Name": "Medical Management System",
+                    "Tools": "Java Swing, XAMPP, MySQL"
+                }
+            ],
+            "Soft Skills": [
+                "Problem-solving",
+                "Teamwork",
+                "Communication",
+                "Collaboration",
+                "Academic Excellence"
+            ],
+            "Overall Match Score": 7,
+            "Projects Relevance Score": 8,
+            "Experience Relevance Score": 6,
+            "Final Score": 540
+        }
+    },
+    {
+        "filename": "resume_c73713db85.pdf",
+        "analysis": {
+            "Key Skills": [],
+            "Overall Analysis": "",
+            "Certifications & Courses": [],
+            "Relevant Projects": [],
+            "Soft Skills": [],
+            "Overall Match Score": 0,
+            "Projects Relevance Score": 0,
+            "Experience Relevance Score": 0,
+            "Final Score": 0
+        }
+    },
+    {
+        "filename": "resume_c7672a8cc6.pdf",
+        "analysis": {
+            "Key Skills": [],
+            "Overall Analysis": "",
+            "Certifications & Courses": [],
+            "Relevant Projects": [],
+            "Soft Skills": [],
+            "Overall Match Score": 0,
+            "Projects Relevance Score": 0,
+            "Experience Relevance Score": 0,
+            "Final Score": 0
+        }
+    },
+    {
+        "filename": "resume_c87dc59925.pdf",
+        "analysis": {
+            "Key Skills": [
+                "Java",
+                "Python",
+                "JavaScript",
+                "C",
+                "React.js",
+                "Databases: MySQL, MongoDB",
+                "Spring Boot",
+                "Git/GitHub"
+            ],
+            "Overall Analysis": "Krishna Bhagat demonstrates strong proficiency in Java and Python, essential skills for the Software Engineer role at CodeZen Technologies. The candidate has experience with essential backend languages Java and Node.js, and frontend framing with React.js. Krishna's academic background, combined with practical experience through projects, shows readiness for an entry-level software engineer role.",
+            "Certifications & Courses": [],
+            "Relevant Projects": [
+                "Music App",
+                "Real-Time Group Chat Application",
+                "Air-Journey Game"
+            ],
+            "Soft Skills": [
+                "Problem-Solving",
+                "Analytical Skills",
+                "Team Collaboration Skills",
+                "Adaptability to New Technologies"
+            ],
+            "Overall Match Score": 8,
+            "Projects Relevance Score": 8,
+            "Experience Relevance Score": 9,
+            "Final Score": 690
+        }
+    }
+]
