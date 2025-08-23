@@ -78,7 +78,7 @@
 
 ### 1) Clone
 ```bash
-git clone https://github.com/your-username/mock-n-hire.git
+git clone https://github.com/rahulthota21/mock-n-hire.git
 cd mock-n-hire
 ```
 
